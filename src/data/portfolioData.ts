@@ -1,6 +1,6 @@
 import type { Project } from "../types";
 
-const imageSource = "src/assets/images";
+const imageSource = "/images";
 
 export const commentFormUrl = "https://forms.gle/PLACEHOLDER";
 

@@ -2,7 +2,7 @@ import type { GitHubStats } from "../types";
 import GitHubStatsCard from "./GitHubStatsCard";
 import { profileInterests } from "../data/portfolioData";
 
-const imageSource = "src/assets/images";
+const imageSource = "/images";
 
 interface ProfileCardProps {
   stats: GitHubStats;
