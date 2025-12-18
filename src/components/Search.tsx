@@ -94,15 +94,18 @@ export default function Search() {
 
       // Search blog posts
       blogPosts.forEach((post: BlogPost) => {
+        const excerptText = Array.isArray(post.excerpt)
+          ? post.excerpt.join(" ")
+          : post.excerpt;
         if (
           post.title.toLowerCase().includes(searchQuery) ||
-          post.excerpt.toLowerCase().includes(searchQuery) ||
+          excerptText.toLowerCase().includes(searchQuery) ||
           post.category.toLowerCase().includes(searchQuery)
         ) {
           foundResults.push({
             type: "blog",
             title: post.title,
-            description: post.excerpt.slice(0, 100) + "...",
+            description: excerptText.slice(0, 100) + "...",
             url: "/blog",
           });
         }
