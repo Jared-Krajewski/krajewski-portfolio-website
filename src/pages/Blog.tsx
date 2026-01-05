@@ -1,9 +1,12 @@
+import React, { useState } from "react";
 import { Calendar, Clock, ChevronDown, ChevronUp } from "lucide-react";
 import { blogPosts } from "../data/portfolioData";
-import { useState } from "react";
+import { Link } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function Blog() {
   const [expandedPosts, setExpandedPosts] = useState<Set<string>>(new Set());
+  const [expandedImageSrc, setExpandedImageSrc] = useState<string | null>(null);
 
   const togglePost = (postId: string) => {
     setExpandedPosts((prev) => {
@@ -20,6 +23,63 @@ export default function Blog() {
   const truncateText = (text: string, maxLength: number) => {
     if (text.length <= maxLength) return text;
     return text.substring(0, maxLength) + "...";
+  };
+
+  const renderTextWithLinks = (text: string): React.ReactNode => {
+    const links: Array<{ pattern: string; replacement: React.ReactNode }> = [
+      {
+        pattern: "messaging section",
+        replacement: (
+          <Link
+            key="messaging"
+            to="/contact"
+            className="text-linkedin-blue hover:underline"
+          >
+            messaging section
+          </Link>
+        ),
+      },
+      {
+        pattern: "CODE PDX",
+        replacement: (
+          <a
+            key="codepdx"
+            href="https://www.codepdx.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-linkedin-blue hover:underline"
+          >
+            CODE PDX
+          </a>
+        ),
+      },
+    ];
+
+    let result: React.ReactNode[] = [text];
+
+    links.forEach(({ pattern, replacement }) => {
+      const newResult: React.ReactNode[] = [];
+      result.forEach((item, itemIndex) => {
+        if (typeof item === "string") {
+          const parts = item.split(pattern);
+          parts.forEach((part, index) => {
+            newResult.push(part);
+            if (index < parts.length - 1) {
+              newResult.push(
+                React.cloneElement(replacement as React.ReactElement, {
+                  key: `${pattern}-${itemIndex}-${index}`,
+                })
+              );
+            }
+          });
+        } else {
+          newResult.push(item);
+        }
+      });
+      result = newResult;
+    });
+
+    return <>{result}</>;
   };
 
   return (
@@ -79,7 +139,7 @@ export default function Blog() {
                           key={idx}
                           className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4"
                         >
-                          {part}
+                          {renderTextWithLinks(part)}
                         </p>
                       ))
                     ) : (
@@ -108,7 +168,8 @@ export default function Blog() {
                     <img
                       src={post.image}
                       alt="Post thumbnail"
-                      className="w-32 h-32 object-cover rounded-lg"
+                      className="w-32 h-32 object-cover rounded-lg cursor-pointer"
+                      onClick={() => setExpandedImageSrc(post.image)}
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         target.src =
@@ -121,6 +182,29 @@ export default function Blog() {
             );
           })}
         </div>
+
+        {expandedImageSrc && (
+          <AnimatePresence>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50"
+              onClick={() => setExpandedImageSrc(null)}
+            >
+              <motion.img
+                src={expandedImageSrc}
+                alt="Expanded view"
+                className="max-w-full max-h-full object-contain"
+                initial={{ scale: 0.5 }}
+                animate={{ scale: 1 }}
+                exit={{ scale: 0.5 }}
+                transition={{ duration: 0.3 }}
+              />
+            </motion.div>
+          </AnimatePresence>
+        )}
       </div>
     </div>
   );

@@ -229,7 +229,7 @@ export default function ProjectPost({ project }: ProjectPostProps) {
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
                   target.src =
-                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='400'%3E%3Crect width='800' height='400' fill='%23e5e7eb'/%3E%3Ctext x='400' y='200' font-size='24' fill='%239ca3af' text-anchor='middle' dominant-baseline='middle' font-family='Arial'%3EImage not found%3C/text%3E%3C/svg%3E";
+                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='400'%3E%3Crect width='800' height='400' fill='%23e5e7eb'/%3E%3Ctext x='400' y='300' font-size='24' fill='%239ca3af' text-anchor='middle' dominant-baseline='middle' font-family='Arial'%3EImage not found%3C/text%3E%3C/svg%3E";
                 }}
               />
             ) : (
