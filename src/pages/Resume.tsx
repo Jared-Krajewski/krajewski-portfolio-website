@@ -39,6 +39,8 @@ export default function Resume() {
               <span>Portland, Oregon, USA</span>
               <span className="mx-2">|</span>
               <span>(203) 564-9501</span>
+              <span className="mx-2">|</span>
+              <span>Portfolio: jaredkrajewski.com</span>
             </div>
             <div className="text-sm text-gray-600 dark:text-gray-400">
               <span>jared.krajewski.dev@gmail.com</span>
@@ -141,15 +143,15 @@ export default function Resume() {
                 <ul className="list-disc list-inside space-y-0.5 text-gray-700 dark:text-gray-300 ml-4 text-sm">
                   <li>
                     Managed and collaborated with engineers and scientists at an
-                    AgTech startup to evaluate, refine, and develop a product
-                    prototype. Established technical goals and timelines.
-                    Reassessed architecture, tech stack, and development
-                    tooling, achieving significant milestones and the first
-                    successful product deployment.
+                    AgTech startup to evaluate and develop a product prototype.
+                    Established technical goals and timelines. Reassessed
+                    architecture, tech stack, and development tooling,
+                    significantly build times and achieving several product
+                    milestones and the first successful product deployment.
                   </li>
                   <li>
                     Architected and automated scalable Linux server deployments
-                    and automated CI/CD pipelines for Docker containerization
+                    and automated Ci/CD pipelines for Docker containerization
                     reducing deployment times by 60%.
                   </li>
                   <li>
@@ -160,10 +162,10 @@ export default function Resume() {
                     optimization of EdgeX Foundry.
                   </li>
                   <li>
-                    Designed scaleable IoT solution architectures and led
-                    end-to-end integration/testing, producing technical
-                    documentation and system diagrams that accelerated team
-                    onboarding and future development.
+                    Designed scalable IoT solutions in typescript and go
+                    architectures and led end-to-end integration/testing,
+                    producing technical documentation and system diagrams that
+                    accelerated team onboarding and future development.
                   </li>
                 </ul>
               </div>
@@ -210,17 +212,18 @@ export default function Resume() {
             <div className="space-y-2">
               <div>
                 <p className="text-gray-700 dark:text-gray-300 text-sm">
-                  <span className="font-semibold">Pass:</span> Built secure Web3
-                  digital wallet (SOLID protocol) enabling unhoused individuals
-                  to safely store personal data and assist caseworkers in
-                  processing housing applications.
+                  <span className="font-semibold">Pass:</span> Built Web3
+                  digital wallet in Javascript (SOLID protocol) enabling
+                  unhoused individuals to safely store personal data and assist
+                  caseworkers in processing housing applications.
                 </p>
               </div>
               <div>
                 <p className="text-gray-700 dark:text-gray-300 text-sm">
-                  <span className="font-semibold">Pack-Pal:</span> A
-                  cross-platform app for organizing and managing packing lists,
-                  adventures, and activities with data visualizations.
+                  <span className="font-semibold">Pack-Pal:</span> A Backpacking
+                  inventory and weight management with drill down charts built
+                  on typescript-react native. Available on mobile native + web
+                  app with auth and sharable configs.
                 </p>
               </div>
               <div>
@@ -228,7 +231,15 @@ export default function Resume() {
                   <span className="font-semibold">ATS-Buddy:</span> Developed
                   AI-powered resume tailoring tool that adapts to job
                   descriptions and URLs; automates editing and formatting for
-                  improved ATS compatibility.
+                  improved ATS compatibility using python.
+                </p>
+              </div>
+              <div>
+                <p className="text-gray-700 dark:text-gray-300 text-sm">
+                  <span className="font-semibold">CODE PDX Website:</span> Led
+                  Javascript React based redesign and deployment of civic tech
+                  site; improved online presence and contributor onboarding. Set
+                  up CI/CD for community maintainability.
                 </p>
               </div>
             </div>

@@ -23,7 +23,7 @@ export const mockProjects: Project[] = [
     commentLink:
       "https://docs.google.com/forms/d/e/1FAIpQLSfhBc4icYFQYkFbChSjTDUujQ-v5Hxl1wKXI4efGUM0EzeuCQ/viewform",
     description:
-      "Pack-Pal is a cross-platform app for organizing and managing packing lists for trips, adventures, and activities. Users can create multiple packs, categorize items, track total weight and volume, and set capacity limits for gear as well as visualize weights in drill down charts. The app supports sharing packs publicly via URL, offers responsive layouts for both mobile and desktop with drag and drop organization, and provides a clean, intuitive interface for efficient packing and planning.",
+      "Pack-Pal is a cross-platform app for organizing and managing packing lists for trips, adventures, and activities. Users can create multiple packs, categorize items, track total weight and volume, and set capacity limits for gear as well as visualize weights in drill down charts. The app supports sharing packs publicly via URL, offers responsive layouts for both mobile and desktop with drag and drop organization, and provides a clean, intuitive interface for efficient packing and planning. Currently available on the web and soon to be released on IOS and Android app stores via Expo!",
     images: [
       `${imageSource}/pack-pal-1.webp`,
       `${imageSource}/pack-pal-2.webp`,
@@ -50,7 +50,7 @@ export const mockProjects: Project[] = [
     link: "https://ats-buddy.onrender.com/",
     commentLink: commentFormUrl,
     description:
-      "ATS-Buddy is an open source tool that automatically tailors your resume to any job posting. Just paste your resume and a job URL—the app scrapes the job description, analyzes your resume and the job listing with AI, and rewrites your resume to highlight the most relevant skills and keywords. It helps you stand out to applicant tracking systems and recruiters, all through a fast, web interface or private local run LLM.",
+      "ATS-Buddy is an open source tool that automatically tailors your resume to any job posting. Just paste your resume and a job URL—the app scrapes the job description, analyzes your resume and the job listing with AI, and rewrites your resume to highlight the most relevant skills and keywords. It helps you stand out to applicant tracking systems and recruiters, all through a fast, web interface or private local run LLM. Due to being hosted on a free tier, users some system startup delays on initial use.",
     images: [`${imageSource}/ats-buddy-1.webp`],
     technologies: [
       "React",
@@ -128,6 +128,8 @@ export const technologies = [
   "JavaScript",
   "TypeScript",
   "React",
+  "React Native",
+  "Express JS",
   "Next.js",
   "Node.js/Bun",
   "Python",
@@ -138,6 +140,8 @@ export const technologies = [
   "Kubernetes",
   "Git",
   "GitHub",
+  "Jira",
+  "Confluence",
   "CI/CD",
   "REST APIs",
   "HTML",
@@ -148,7 +152,7 @@ export const technologies = [
   "Redis",
   "Vercel",
   "Google Cloud",
-  "Express",
+  "Expo",
   "Ollama",
   "EdgeX",
   "IOT",
@@ -207,8 +211,8 @@ export const blogPosts: BlogPost[] = [
     excerpt: [
       "For years, I worked as an EMT and eventually leveled up to a paramedic.. racing to emergencies, making split-second decisions amid chaos, and always trying to keep my cool. It was intensely rewarding, adrenaline fueled work that forged resilience, lightning fast problem solving, and the ability to communicate clearly when every second counted. After 7 years of endless shifts, multiple workplace injuries, and facing burnout, I knew it was time for a change.",
       "Enter software engineering. With my father being a software engineer, I'd always been comfortable around computers.. building my own rigs, tweaking configs, subbing Windows for Linux, customizing everything in sight, and even dabbling in game development through modding existing ones. That latent tech curiosity finally took center stage. The transition wasn't easy: I traded stethoscopes for Stack Overflow, sirens for syntax errors, and late-night calls for even later-night debugging sessions (often questioning my new life choices). Sure.. the meaning of (a) code has changed quite a bit.",
-      "My education did not come in the form of a degree, although I had contemplated a coding bootcamp. Ultimately I decided to self-study through online resources like freecodecamp.com, youtube lessons & tutorials, and building small projects. The learning curve was steep, but persistence always pays off. I leaned heavily on stack overflow, and open source projects to accelerate my learning and gain practical experience. After moving from CT to Oregon, I found a civic tech group CODE PDX which provided mentorship, community, and real world projects to contribute to.",
-      "From CODE PDX, I landed my first full time engineering role as a contractor for an agTech startup LATERAL.systems where I worked with a small team over the course of a year and a half to build edge based IOT systems for continuous monitoring or ambient and water conditions for indoor growing systems. I offered system architecture guidance, set up our development environment and devOps, designed frontend assets, and containerized edge applications, developed bluetooth interfacing, automated deployments to local linux servers and deployed the product on site at customer locations.",
+      "My education did not come in the form of a degree, although I had contemplated a coding bootcamp. Ultimately I decided to self-study through online resources like freecodecamp.com, youtube lessons & tutorials, and building small projects. The learning curve was steep, but persistence always pays off. I leaned heavily on stack overflow, and open source projects to accelerate my learning and gain practical experience. After moving from Connecticut to Oregon, I found a civic tech group CODE PDX which provided mentorship, community, and real world projects to contribute to.",
+      "From CODE PDX, I landed my first full time engineering role as a contractor for an agTech startup LATERAL.systems where I worked with a small team over the course of a year and a half to build edge based IOT systems for continuous monitoring of ambient and water conditions for indoor growing systems. I offered system architecture design & guidance, set up our development environment and devOps, designed frontend assets, containerized edge applications, developed bluetooth interfacing, automated deployments to local linux servers and deployed the product on site at customer locations.",
       "Now, as a software engineer, I'm channeling that drive to help people in a new way: building tools and systems that make lives easier, safer, or just more efficient. If you're contemplating your own career pivot, take it from someone who went from ambulances to algorithms: if I can do it, anyone can.",
     ],
     date: "2025-11-01",

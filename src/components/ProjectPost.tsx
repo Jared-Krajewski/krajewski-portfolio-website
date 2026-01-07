@@ -138,6 +138,19 @@ export default function ProjectPost({ project }: ProjectPostProps) {
     return `${Math.floor(diffDays / 30)}mo`;
   };
 
+  // Prefetch the next carousel image to reduce flicker during transitions
+  useEffect(() => {
+    if (!project.images || project.images.length === 0) return;
+    const nextIdx = (currentImageIndex + 1) % project.images.length;
+    const img = new Image();
+    img.src = project.images[nextIdx];
+    return () => {
+      // release reference
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+      img.src && (img.src = "");
+    };
+  }, [currentImageIndex, project.images]);
+
   return (
     <article
       className={`bg-white dark:bg-linkedin-dark rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden relative ${
@@ -164,6 +177,8 @@ export default function ProjectPost({ project }: ProjectPostProps) {
             <img
               src={project.logo}
               alt={project.name}
+              loading="eager"
+              decoding="async"
               className="w-12 h-12 rounded-full object-cover bg-gray-200 dark:bg-gray-700"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
@@ -225,6 +240,8 @@ export default function ProjectPost({ project }: ProjectPostProps) {
               <img
                 src={project.images[currentImageIndex]}
                 alt={`${project.name} screenshot ${currentImageIndex + 1}`}
+                loading="eager"
+                decoding="async"
                 className="absolute inset-0 w-full h-full object-cover object-top"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
@@ -238,6 +255,8 @@ export default function ProjectPost({ project }: ProjectPostProps) {
                 <img
                   src={project.images[outgoingImageIndex]}
                   alt={`${project.name} screenshot ${outgoingImageIndex + 1}`}
+                  loading="eager"
+                  decoding="async"
                   className={`absolute inset-0 w-full h-full object-cover object-top transition-transform duration-300 ${
                     slideDirection === "right"
                       ? "-translate-x-full"
@@ -254,6 +273,8 @@ export default function ProjectPost({ project }: ProjectPostProps) {
                 <img
                   src={project.images[nextImageIndex]}
                   alt={`${project.name} screenshot ${nextImageIndex + 1}`}
+                  loading="eager"
+                  decoding="async"
                   className={`absolute inset-0 w-full h-full object-cover object-top transition-transform duration-300 ${
                     animateIn
                       ? "translate-x-0"

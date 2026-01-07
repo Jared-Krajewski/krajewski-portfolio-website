@@ -59,8 +59,8 @@ export default function ProfileCard({ stats }: ProfileCardProps) {
         <div className="px-3 py-3 transition-colors">
           <div className="w-full text-left text-[12px] text-gray-600 dark:text-gray-400 flex items-center gap-2 font-semibold">
             <span>
-              Full stack software engineer specializing in the transformation of
-              concepts into performant applications.
+              Former paramedic turned full stack software engineer specializing
+              in the transformation of concepts into performant applications.
             </span>
           </div>
         </div>
