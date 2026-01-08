@@ -11,6 +11,7 @@ import Projects from "./pages/Projects";
 import Resume from "./pages/Resume";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
+import { Analytics } from "@vercel/analytics/react";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -34,6 +35,7 @@ function App() {
       <div className="min-h-screen bg-linkedin-bg dark:bg-gray-900 transition-colors">
         <Navbar />
         <AnimatedRoutes />
+        <Analytics />
       </div>
     </Router>
   );
