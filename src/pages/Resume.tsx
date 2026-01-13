@@ -71,14 +71,13 @@ export default function Resume() {
               SUMMARY
             </h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-sm">
-              Full stack software engineer with 5 years of experience
-              architecting and delivering web and IoT applications. Expertise in
-              full stack development, DevOps, CI/CD pipeline automation, and
-              Linux web server management. Paramedic turned developer leveraging
-              a unique blend of analytical thinking, critical problem-solving,
-              and clear execution under pressure. Proven ability to deliver
-              scalable web applications, resilient IoT integrations, and
-              automated DevOps pipelines from prototype to production.
+              Software engineer with 4+ years of experience owning backend and
+              distributed systems end to end, from architecture and API design
+              to deployment and production operations. Strong background in Go,
+              Python, and JavaScript, with experience building real time, data
+              driven services and automating CI/CD pipelines in Linux
+              environments. Known for ownership, adaptability, and delivering
+              reliable systems under pressure.
             </p>
           </section>
 
@@ -93,26 +92,26 @@ export default function Resume() {
                 (ES6+), TypeScript, Go, Python, C++, Shell
               </div>
               <div>
-                <span className="font-semibold">Frontend:</span> React, D3.js,
-                Tailwind CSS, HTML5/CSS3
-              </div>
-              <div>
                 <span className="font-semibold">Backend and APIs:</span>{" "}
-                Node.js, Express, Echo, REST APIs, WebSockets, OAuth, JWT,
-                HTTPS/TLS
+                Node.js, Bun, Express, Echo, REST APIs, WebSockets, OAuth, JWT,
+                Supabase
               </div>
               <div>
-                <span className="font-semibold">IoT:</span> EdgeX Foundry,
-                Arduino, ESP32, MQTT, Bluetooth, WiFi
+                <span className="font-semibold">DevOps & Infrastructure:</span>{" "}
+                Git, Docker, GitHub Actions (CI/CD), Linux server automation,
+                VMs, Grafana
               </div>
               <div>
-                <span className="font-semibold">DevOps/Cloud and Testing:</span>{" "}
-                Git/GitHub, Docker, Kubernetes, GitHub Actions (CI/CD), Linux
-                server automation, VMs, Jest
+                <span className="font-semibold">Frontend:</span> React, React
+                Native, D3.js, Tailwind CSS, HTML5/CSS3
               </div>
               <div>
                 <span className="font-semibold">Databases:</span> SQL, NoSQL,
                 InfluxDB, Redis
+              </div>
+              <div>
+                <span className="font-semibold">IoT:</span> EdgeX Foundry,
+                Arduino, ESP32, MQTT, Bluetooth, WiFi
               </div>
             </div>
           </section>
@@ -129,43 +128,48 @@ export default function Resume() {
                 <div className="flex justify-between items-start mb-1">
                   <div>
                     <h3 className="font-semibold text-gray-900 dark:text-white text-sm">
-                      Software Engineer
+                      Software Engineer (contract)
                     </h3>
                     <p className="text-gray-600 dark:text-gray-400 text-sm italic">
-                      LATERAL.systems (contract)
+                      LATERAL.systems
                     </p>
                   </div>
                   <div className="text-right text-gray-600 dark:text-gray-400 text-sm">
-                    <p>November 2023 - April 2025</p>
+                    <p>November 2023 - November 2025</p>
                     <p>Portland, OR</p>
                   </div>
                 </div>
                 <ul className="list-disc list-inside space-y-0.5 text-gray-700 dark:text-gray-300 ml-4 text-sm">
                   <li>
-                    Managed and collaborated with engineers and scientists at an
-                    AgTech startup to evaluate and develop a product prototype.
-                    Established technical goals and timelines. Reassessed
-                    architecture, tech stack, and development tooling,
-                    significantly build times and achieving several product
-                    milestones and the first successful product deployment.
+                    Led technical collaboration with engineers and scientists at
+                    an early-stage AgTech startup to evaluate feasibility,
+                    define technical goals, and establish delivery timelines for
+                    a new product prototype.
                   </li>
                   <li>
-                    Architected and automated scalable Linux server deployments
-                    and automated Ci/CD pipelines for Docker containerization
-                    reducing deployment times by 60%.
+                    Reassessed system architecture, technology stack, and
+                    development tooling, significantly reducing build times and
+                    enabling the first successful production deployment.
                   </li>
                   <li>
-                    Developed resilient C++ firmware for Arduino/ESP32-based
-                    sensor suites, configured Bluetooth and various IoT
-                    protocols, and implemented automatic device discovery and
-                    integration. Engineered the setup, deployment, and
-                    optimization of EdgeX Foundry.
+                    Architected and automated Linux server deployments and CI/CD
+                    pipelines for Docker-based services, reducing deployment
+                    time by approximately 60%.
                   </li>
                   <li>
-                    Designed scalable IoT solutions in typescript and go
-                    architectures and led end-to-end integration/testing,
-                    producing technical documentation and system diagrams that
-                    accelerated team onboarding and future development.
+                    Developed resilient C++ firmware for Arduino and ESP32
+                    sensor platforms, implementing Bluetooth connectivity,
+                    MQTT-based communication, and automated device discovery.
+                  </li>
+                  <li>
+                    Produced system diagrams and technical documentation that
+                    accelerated onboarding and enabled continued development
+                    after contract completion.
+                  </li>
+                  <li>
+                    Designed and deployed a scalable IoT platform using
+                    TypeScript and Go, including EdgeX Foundry configuration,
+                    integration testing, and production hardening.
                   </li>
                 </ul>
               </div>
@@ -175,10 +179,10 @@ export default function Resume() {
                 <div className="flex justify-between items-start mb-1">
                   <div>
                     <h3 className="font-semibold text-gray-900 dark:text-white text-sm">
-                      Software Engineer
+                      Software Engineer (volunteer)
                     </h3>
                     <p className="text-gray-600 dark:text-gray-400 text-sm italic">
-                      Code PDX (volunteer)
+                      Code PDX
                     </p>
                   </div>
                   <div className="text-right text-gray-600 dark:text-gray-400 text-sm">
@@ -188,16 +192,16 @@ export default function Resume() {
                 </div>
                 <ul className="list-disc list-inside space-y-0.5 text-gray-700 dark:text-gray-300 ml-4 text-sm">
                   <li>
-                    Mentored and collaborated with volunteers of varying skill
-                    levels and skillsets, contributing to community-driven
-                    digital services for social impact initiatives while
-                    fostering a supportive and productive team environment.
+                    Mentored and collaborated with volunteers across a wide
+                    range of skill levels, providing technical guidance and code
+                    reviews while contributing to community driven software
+                    projects.
                   </li>
                   <li>
-                    Designed, developed and launched a React-based organization
-                    website, improving online presence and streamlining
-                    onboarding of new members resulting in a 30% increase in
-                    monthly contributors.
+                    Designed, developed, and launched a React based organization
+                    website, improving public visibility and streamlining
+                    onboarding workflows, resulting in a 30% increase in monthly
+                    contributors.
                   </li>
                 </ul>
               </div>
@@ -212,32 +216,26 @@ export default function Resume() {
             <div className="space-y-2">
               <div>
                 <p className="text-gray-700 dark:text-gray-300 text-sm">
-                  <span className="font-semibold">Pass:</span> Built Web3
-                  digital wallet in Javascript (SOLID protocol) enabling
-                  unhoused individuals to safely store personal data and assist
-                  caseworkers in processing housing applications.
+                  <span className="font-semibold">Pack-Pal:</span> Backpacking
+                  inventory and weight management platform built with TypeScript
+                  and React Native. Implemented drill-down data visualizations
+                  and cross-platform support for iOS, Android, and web, with
+                  authenticated user profiles and shareable configurations.
                 </p>
               </div>
               <div>
                 <p className="text-gray-700 dark:text-gray-300 text-sm">
-                  <span className="font-semibold">Pack-Pal:</span> A Backpacking
-                  inventory and weight management with drill down charts built
-                  on typescript-react native. Available on mobile native + web
-                  app with auth and sharable configs.
-                </p>
-              </div>
-              <div>
-                <p className="text-gray-700 dark:text-gray-300 text-sm">
-                  <span className="font-semibold">ATS-Buddy:</span> Developed
-                  AI-powered resume tailoring tool that adapts to job
-                  descriptions and URLs; automates editing and formatting for
-                  improved ATS compatibility using python.
+                  <span className="font-semibold">ATS-Buddy:</span> AI-powered
+                  resume tailoring tool that adapts resumes to job descriptions
+                  and URLs. Built in Python to automate resume editing and PDF
+                  formatting, improving ATS compatibility and reducing manual
+                  customization time.
                 </p>
               </div>
               <div>
                 <p className="text-gray-700 dark:text-gray-300 text-sm">
                   <span className="font-semibold">CODE PDX Website:</span> Led
-                  Javascript React based redesign and deployment of civic tech
+                  Javascript-React based redesign and deployment of civic tech
                   site; improved online presence and contributor onboarding. Set
                   up CI/CD for community maintainability.
                 </p>
@@ -249,7 +247,7 @@ export default function Resume() {
 
       <div className="mt-6 flex items-center justify-center gap-4 text-sm text-gray-600 dark:text-gray-400">
         <FileText className="w-5 h-5" />
-        <span>Last updated: December 2025</span>
+        <span>Last updated: January 2026</span>
       </div>
     </div>
   );
