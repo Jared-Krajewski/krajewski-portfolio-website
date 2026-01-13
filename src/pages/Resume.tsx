@@ -128,10 +128,10 @@ export default function Resume() {
                 <div className="flex justify-between items-start mb-1">
                   <div>
                     <h3 className="font-semibold text-gray-900 dark:text-white text-sm">
-                      Software Engineer (contract)
+                      LATERAL.systems
                     </h3>
                     <p className="text-gray-600 dark:text-gray-400 text-sm italic">
-                      LATERAL.systems
+                      Software Engineer (contract)
                     </p>
                   </div>
                   <div className="text-right text-gray-600 dark:text-gray-400 text-sm">
@@ -179,10 +179,10 @@ export default function Resume() {
                 <div className="flex justify-between items-start mb-1">
                   <div>
                     <h3 className="font-semibold text-gray-900 dark:text-white text-sm">
-                      Software Engineer (volunteer)
+                      Code PDX
                     </h3>
                     <p className="text-gray-600 dark:text-gray-400 text-sm italic">
-                      Code PDX
+                      Software Engineer (volunteer)
                     </p>
                   </div>
                   <div className="text-right text-gray-600 dark:text-gray-400 text-sm">
