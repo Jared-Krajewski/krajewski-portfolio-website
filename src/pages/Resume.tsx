@@ -38,8 +38,6 @@ export default function Resume() {
             <div className="text-sm text-gray-600 dark:text-gray-400 mb-1">
               <span>Portland, Oregon, USA</span>
               <span className="mx-2">|</span>
-              <span>(203) 564-9501</span>
-              <span className="mx-2">|</span>
               <span>Portfolio: jaredkrajewski.com</span>
             </div>
             <div className="text-sm text-gray-600 dark:text-gray-400">
@@ -182,7 +180,7 @@ export default function Resume() {
                       Code PDX
                     </h3>
                     <p className="text-gray-600 dark:text-gray-400 text-sm italic">
-                      Software Engineer (volunteer)
+                      Software Engineer
                     </p>
                   </div>
                   <div className="text-right text-gray-600 dark:text-gray-400 text-sm">

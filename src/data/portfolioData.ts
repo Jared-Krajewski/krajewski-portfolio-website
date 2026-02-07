@@ -2,7 +2,8 @@ import type { Project } from "../types";
 
 const imageSource = "/images";
 
-export const commentFormUrl = "https://forms.gle/PLACEHOLDER";
+export const commentFormUrl =
+  "https://docs.google.com/forms/d/e/1FAIpQLSev82Zij-OwxCMow3jS082ywvSiUZG-4phAOEWOIdcVzLwVqQ/viewform?usp=publish-editor";
 
 export const profileInterests = [
   "Cloud & Native Architectures",
@@ -17,6 +18,23 @@ export const profileInterests = [
 export const mockProjects: Project[] = [
   {
     id: "1",
+    name: "Planet Game",
+    logo: `${imageSource}/planet-game-icon.webp`,
+    link: "https://www.apple.com/app-store/",
+    commentLink: commentFormUrl,
+    description:
+      "Merge planets in this cosmic Suika style puzzler with power ups! 🪐 no ads, no paywalls, no web connection - just planets! Drop celestial bodies into your tank and watch gravity do the work. When identical planets touch, they fuse into a larger worlds. In this gravity well, space is your enemy. As the tank fills up, you'll need more than just luck to survive. Use strategic Power-ups to turn things around. Need the next planet first? Swap your upcoming planets, ensuring you always have the right tool for the next merge. Got a bad jam? Planets stuck in an awkward pile? Gently shake your phone to stir the tank. Use real-world motion to settle the debris, pack the planets tighter, and clear the path for your next big move.",
+    images: [
+      `${imageSource}/planet-game-1.webp`,
+      `${imageSource}/planet-game-2.webp`,
+      `${imageSource}/planet-game-3.webp`,
+    ],
+    technologies: ["Unity", "iOS", "C Sharp", "Android", "Game Development"],
+    repoLink: "https://github.com/Jared-Krajewski",
+    postedDate: "2026-02-06",
+  },
+  {
+    id: "2",
     name: "Pack-Pal",
     logo: `${imageSource}/pack-pal-icon.webp`,
     link: "https://pack-pal-gamma.vercel.app/",
@@ -36,15 +54,15 @@ export const mockProjects: Project[] = [
       "Node.js",
       "Supabase",
       "Zustand",
-      "Ios",
+      "iOS",
       "Android",
       "Web",
     ],
-    repoLink: "https://github.com/username/ecommerce",
+    repoLink: "https://github.com/Jared-Krajewski/Pack-Pal",
     postedDate: "2025-11-1",
   },
   {
-    id: "2",
+    id: "3",
     name: "ATS Buddy",
     logo: `${imageSource}/ats-buddy-icon.webp`,
     link: "https://ats-buddy.onrender.com/",
@@ -67,11 +85,11 @@ export const mockProjects: Project[] = [
       "ai",
       "docker",
     ],
-    repoLink: "https://github.com/username/ai-taskmanager",
+    repoLink: "https://github.com/Jared-Krajewski/ATS-Buddy",
     postedDate: "2025-08-22",
   },
   {
-    id: "3",
+    id: "4",
     name: "PASS",
     logo: `${imageSource}/pass-icon.webp`,
     link: "https://pass-wine.vercel.app/",
@@ -96,7 +114,7 @@ export const mockProjects: Project[] = [
     postedDate: "2024-09-03",
   },
   {
-    id: "4",
+    id: "5",
     name: "CODE PDX Website",
     logo: `${imageSource}/code-pdx-icon.webp`,
     link: "https://www.codepdx.org/",
@@ -109,7 +127,7 @@ export const mockProjects: Project[] = [
     postedDate: "2023-12-14",
   },
   {
-    id: "5",
+    id: "6",
     name: "Jim",
     logo: `${imageSource}/jim-icon.webp`,
     link: "",

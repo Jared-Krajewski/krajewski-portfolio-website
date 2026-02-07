@@ -21,6 +21,7 @@ function AnimatedRoutes() {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Home />} />
         <Route path="/projects" element={<Projects />} />
+        <Route path="/projects/:projectName" element={<Projects />} />
         <Route path="/resume" element={<Resume />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/blog" element={<Blog />} />
@@ -28,6 +29,7 @@ function AnimatedRoutes() {
     </AnimatePresence>
   );
 }
+ import ProjectDetail from "./pages/ProjectDetail";
 
 function App() {
   return (

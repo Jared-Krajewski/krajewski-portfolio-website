@@ -242,7 +242,11 @@ export default function ProjectPost({ project }: ProjectPostProps) {
                 alt={`${project.name} screenshot ${currentImageIndex + 1}`}
                 loading="eager"
                 decoding="async"
-                className="absolute inset-0 w-full h-full object-cover object-top"
+                className={
+                  project.id === "1"
+                    ? "absolute inset-0 w-full h-full object-contain"
+                    : "absolute inset-0 w-full h-full object-cover object-top"
+                }
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
                   target.src =
@@ -257,11 +261,19 @@ export default function ProjectPost({ project }: ProjectPostProps) {
                   alt={`${project.name} screenshot ${outgoingImageIndex + 1}`}
                   loading="eager"
                   decoding="async"
-                  className={`absolute inset-0 w-full h-full object-cover object-top transition-transform duration-300 ${
-                    slideDirection === "right"
-                      ? "-translate-x-full"
-                      : "translate-x-full"
-                  }`}
+                  className={
+                    project.id === "1"
+                      ? `absolute inset-0 w-full h-full object-contain transition-transform duration-300 ${
+                          slideDirection === "right"
+                            ? "-translate-x-full"
+                            : "translate-x-full"
+                        }`
+                      : `absolute inset-0 w-full h-full object-cover object-top transition-transform duration-300 ${
+                          slideDirection === "right"
+                            ? "-translate-x-full"
+                            : "translate-x-full"
+                        }`
+                  }
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.src =
@@ -275,13 +287,23 @@ export default function ProjectPost({ project }: ProjectPostProps) {
                   alt={`${project.name} screenshot ${nextImageIndex + 1}`}
                   loading="eager"
                   decoding="async"
-                  className={`absolute inset-0 w-full h-full object-cover object-top transition-transform duration-300 ${
-                    animateIn
-                      ? "translate-x-0"
-                      : slideDirection === "right"
-                      ? "translate-x-full"
-                      : "-translate-x-full"
-                  }`}
+                  className={
+                    project.id === "1"
+                      ? `absolute inset-0 w-full h-full object-contain transition-transform duration-300 ${
+                          animateIn
+                            ? "translate-x-0"
+                            : slideDirection === "right"
+                            ? "translate-x-full"
+                            : "-translate-x-full"
+                        }`
+                      : `absolute inset-0 w-full h-full object-cover object-top transition-transform duration-300 ${
+                          animateIn
+                            ? "translate-x-0"
+                            : slideDirection === "right"
+                            ? "translate-x-full"
+                            : "-translate-x-full"
+                        }`
+                  }
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.src =
