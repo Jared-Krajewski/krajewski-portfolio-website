@@ -6,6 +6,7 @@ import {
   FileText,
   MessageSquare,
   Bell,
+  Lock,
   Sun,
   Moon,
   Menu,
@@ -44,11 +45,12 @@ export default function Navbar() {
     { icon: FileText, label: "Resume", path: "/resume" },
     { icon: MessageSquare, label: "Messaging", path: "/contact" },
     { icon: Bell, label: "Notifications", path: "/blog" },
+    { icon: Lock, label: "Privacy", path: "/privacy" },
   ];
 
   return (
     <>
-      <nav className="sticky top-0 z-50 bg-white dark:bg-linkedin-dark border-b border-gray-200 dark:border-gray-700">
+      <nav className="sticky top-0 z-50 bg-white dark:bg-linkedin-dark border-b border-gray-200 dark:border-gray-700 pt-2">
         <div className="max-w-[1400px] mx-auto px-4">
           <div className="flex items-center justify-between h-[52px]">
             {/* Left section */}
@@ -65,7 +67,10 @@ export default function Navbar() {
             {/* Center section */}
             <div className="hidden md:flex items-center pr-52 gap-2">
               {navItems.map((item) => {
-                const isActive = location.pathname === item.path;
+                const isActive =
+                  item.path === "/privacy"
+                    ? location.pathname.startsWith("/privacy")
+                    : location.pathname === item.path;
                 return (
                   <Link
                     key={item.label}
@@ -121,10 +126,13 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden fixed top-[52px] left-0 right-0 bg-white dark:bg-linkedin-dark border-b border-gray-200 dark:border-gray-700 z-40">
+        <div className="md:hidden fixed top-[60px] left-0 right-0 bg-white dark:bg-linkedin-dark border-b border-gray-200 dark:border-gray-700 z-40">
           <div className="px-4 py-2 space-y-1">
             {navItems.map((item) => {
-              const isActive = location.pathname === item.path;
+              const isActive =
+                item.path === "/privacy"
+                  ? location.pathname.startsWith("/privacy")
+                  : location.pathname === item.path;
               return (
                 <Link
                   key={item.label}

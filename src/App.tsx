@@ -11,6 +11,7 @@ import Projects from "./pages/Projects";
 import Resume from "./pages/Resume";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
+import Privacy from "./pages/Privacy";
 import { Analytics } from "@vercel/analytics/react";
 
 function AnimatedRoutes() {
@@ -25,6 +26,8 @@ function AnimatedRoutes() {
         <Route path="/resume" element={<Resume />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/privacy/:product" element={<Privacy />} />
       </Routes>
     </AnimatePresence>
   );
