@@ -29,7 +29,6 @@ function AnimatedRoutes() {
     </AnimatePresence>
   );
 }
- import ProjectDetail from "./pages/ProjectDetail";
 
 function App() {
   return (

@@ -6,16 +6,22 @@ import { useLocation } from "react-router-dom";
 
 export default function Projects() {
   const location = useLocation();
-  const projectName = location.pathname.startsWith("/projects/") ? location.pathname.replace("/projects/", "") : null;
+  const projectName = location.pathname.startsWith("/projects/")
+    ? location.pathname.replace("/projects/", "")
+    : null;
   const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     if (projectName) {
       const idx = mockProjects.findIndex(
-        (p) => p.name.replace(/[^a-zA-Z0-9]/g, "").toLowerCase() === projectName
+        (p) =>
+          p.name.replace(/[^a-zA-Z0-9]/g, "").toLowerCase() === projectName,
       );
       if (idx !== -1 && projectRefs.current[idx]) {
-        projectRefs.current[idx].scrollIntoView({ behavior: "smooth", block: "center" });
+        projectRefs.current[idx].scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
       }
     }
   }, [projectName]);
@@ -44,12 +50,14 @@ export default function Projects() {
 
       <div className="space-y-4 max-w-[1200px] mx-auto">
         {mockProjects.map((project, index) => {
-          const normalizedName = project.name.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+          const normalizedName = project.name
+            .replace(/[^a-zA-Z0-9]/g, "")
+            .toLowerCase();
           const highlight = projectName === normalizedName;
           return (
             <motion.div
               key={project.id}
-              ref={el => projectRefs.current[index] = el}
+              ref={(el) => (projectRefs.current[index] = el)}
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.1 * index, duration: 0.3 }}

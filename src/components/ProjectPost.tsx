@@ -24,7 +24,7 @@ export default function ProjectPost({ project }: ProjectPostProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [slideDirection, setSlideDirection] = useState<"left" | "right">(
-    "right"
+    "right",
   );
   const [nextImageIndex, setNextImageIndex] = useState(0);
   const [outgoingImageIndex, setOutgoingImageIndex] = useState(0);
@@ -293,15 +293,15 @@ export default function ProjectPost({ project }: ProjectPostProps) {
                           animateIn
                             ? "translate-x-0"
                             : slideDirection === "right"
-                            ? "translate-x-full"
-                            : "-translate-x-full"
+                              ? "translate-x-full"
+                              : "-translate-x-full"
                         }`
                       : `absolute inset-0 w-full h-full object-cover object-top transition-transform duration-300 ${
                           animateIn
                             ? "translate-x-0"
                             : slideDirection === "right"
-                            ? "translate-x-full"
-                            : "-translate-x-full"
+                              ? "translate-x-full"
+                              : "-translate-x-full"
                         }`
                   }
                   onError={(e) => {

@@ -9,7 +9,7 @@ function normalizeProjectName(name: string) {
 export default function ProjectDetail() {
   const { projectName } = useParams<{ projectName: string }>();
   const project = mockProjects.find(
-    (p) => normalizeProjectName(p.name) === projectName
+    (p) => normalizeProjectName(p.name) === projectName,
   );
 
   if (!project) {
