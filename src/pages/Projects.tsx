@@ -57,7 +57,9 @@ export default function Projects() {
           return (
             <motion.div
               key={project.id}
-              ref={(el) => (projectRefs.current[index] = el)}
+              ref={(el) => {
+                projectRefs.current[index] = el;
+              }}
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.1 * index, duration: 0.3 }}
