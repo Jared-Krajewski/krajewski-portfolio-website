@@ -44,51 +44,17 @@ If you have any questions about this privacy policy, please contact us through t
 
 Thank you for playing Planet Game!`,
   },
-  {
-    product: "pack-pal",
-    displayName: "Pack-Pal",
-    content: `Pack-Pal Privacy Policy
-Effective Date: February 4, 2026
-
-Thank you for using Pack-Pal! This privacy policy explains how we handle your information when you use our application.
-
-Information We Collect
-We do not collect, store, or process any personal information or user data. Pack-Pal is designed to be used offline and does not require an internet connection.
-
-• No Account Data: No user accounts, emails, or personal identifiers are collected.
-• No Usage Data: We do not track usage patterns, progress, or any statistics.
-• No Device Data: We do not access device information, location, or any hardware details.
-• No Advertising: Pack-Pal does not display ads or use any advertising networks.
-
-How We Use Information
-Since we don't collect any information, we don't use it for any purposes.
-
-Data Sharing
-We do not share any data with third parties because we don't collect any data.
-
-Data Security
-All application data is stored locally on your device. We don't have access to or control over your local data.
-
-Children's Privacy
-Pack-Pal is suitable for all ages and does not collect any information from children.
-
-Changes to This Policy
-If we make changes to this privacy policy, we will update the date at the top and make the updated policy available within the application.
-
-Contact Us
-If you have any questions about this privacy policy, please contact us through the App Store or our website.
-
-Thank you for using Pack-Pal!`,
-  },
 ];
 
 export default function Privacy() {
   const navigate = useNavigate();
   const { product } = useParams<{ product: string }>();
-  
+
   // Default to first product if no product specified
   const activeProduct = product || privacyPolicies[0].product;
-  const activePolicy = privacyPolicies.find(p => p.product === activeProduct) || privacyPolicies[0];
+  const activePolicy =
+    privacyPolicies.find((p) => p.product === activeProduct) ||
+    privacyPolicies[0];
 
   return (
     <motion.div

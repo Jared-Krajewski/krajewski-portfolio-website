@@ -7,6 +7,7 @@ export const commentFormUrl =
 
 export const profileInterests = [
   "Cloud & Native Architectures",
+  "Web and Mobile Development",
   "BLE & IoT",
   "AI/ML Integration",
   "DevOps Automation",
@@ -23,7 +24,7 @@ export const mockProjects: Project[] = [
     link: "https://www.apple.com/app-store/",
     commentLink: commentFormUrl,
     description:
-      "Merge planets in this cosmic Suika style puzzler with power ups! 🪐 no ads, no paywalls, no web connection - just planets! Drop celestial bodies into your tank and watch gravity do the work. When identical planets touch, they fuse into a larger worlds. In this gravity well, space is your enemy. As the tank fills up, you'll need more than just luck to survive. Use strategic Power-ups to turn things around. Need the next planet first? Swap your upcoming planets, ensuring you always have the right tool for the next merge. Got a bad jam? Planets stuck in an awkward pile? Gently shake your phone to stir the tank. Use real-world motion to settle the debris, pack the planets tighter, and clear the path for your next big move.",
+      "Merge planets in this cosmic Suika style puzzler with power ups! 🪐 no ads, no paywalls, no web connection - just planets! Drop celestial bodies into your tank and watch gravity do the work. When identical planets touch, they fuse into a larger worlds. In this gravity well, space is your enemy. As the tank fills up, you'll need more than just luck to survive. Use strategic Power-ups to turn things around. Need the next planet first? Swap your upcoming planets, ensuring you always have the right tool for the next merge. Got a bad jam? Planets stuck in an awkward pile? Gently shake your phone to stir the tank!",
     images: [
       `${imageSource}/planet-game-1.webp`,
       `${imageSource}/planet-game-2.webp`,
@@ -41,11 +42,14 @@ export const mockProjects: Project[] = [
     commentLink:
       "https://docs.google.com/forms/d/e/1FAIpQLSfhBc4icYFQYkFbChSjTDUujQ-v5Hxl1wKXI4efGUM0EzeuCQ/viewform",
     description:
-      "Pack-Pal is a cross-platform app for organizing and managing packing lists for trips, adventures, and activities. Users can create multiple packs, categorize items, track total weight and volume, and set capacity limits for gear as well as visualize weights in drill down charts. The app supports sharing packs publicly via URL, offers responsive layouts for both mobile and desktop with drag and drop organization, and provides a clean, intuitive interface for efficient packing and planning. Currently available on the web and soon to be released on IOS and Android app stores via Expo!",
+      "Pack-Pal is a cross-platform app for organizing and managing packing lists for trips, adventures, and activities. Users can create multiple packs, categorize items, track total weight and volume, and set capacity limits for gear as well as visualize weights in drill down charts. The app supports sharing packs publicly via URL, offers responsive layouts for both mobile and desktop with drag and drop organization, and provides a clean, intuitive interface for efficient packing and planning. Currently available on the web and soon to be released on IOS and Android app stores.",
+    publicPackLink:
+      "https://pack-pal-gamma.vercel.app/pack/34f20d94-34a2-4775-8f9a-01b8f1e96125",
     images: [
       `${imageSource}/pack-pal-1.webp`,
       `${imageSource}/pack-pal-2.webp`,
-      `${imageSource}/pack-pal-3.gif`,
+      `${imageSource}/pack-pal-3.webp`,
+      `${imageSource}/pack-pal-4.gif`,
     ],
     technologies: [
       "React Native",
@@ -68,7 +72,7 @@ export const mockProjects: Project[] = [
     link: "https://ats-buddy.onrender.com/",
     commentLink: commentFormUrl,
     description:
-      "ATS-Buddy is an open source tool that automatically tailors your resume to any job posting. Just paste your resume and a job URL—the app scrapes the job description, analyzes your resume and the job listing with AI, and rewrites your resume to highlight the most relevant skills and keywords. It helps you stand out to applicant tracking systems and recruiters, all through a fast, web interface or private local run LLM. Due to being hosted on a free tier, users some system startup delays on initial use.",
+      "ATS-Buddy is an open source tool that automatically tailors your resume to any job posting. Just paste your resume and a job URL then the app scrapes the job description, analyzes your resume and the job listing with AI, and rewrites your resume to highlight the most relevant skills and keywords. It helps you stand out to applicant tracking systems and recruiters, all through a simple web interface or private local run LLM. Due to being hosted on a free tier, you will experience system startup delays on initial use.",
     images: [`${imageSource}/ats-buddy-1.webp`],
     technologies: [
       "React",
@@ -133,7 +137,7 @@ export const mockProjects: Project[] = [
     link: "",
     commentLink: commentFormUrl,
     description:
-      "A simple to use and open source fitness tracking application where you can log your workouts and see trends over time as well as keep track of weights used on various lifts. Includes a set timer with subtle audio or visual cues so you can focus on your workout. Available as a web app or native IOS/Android app via Expo.",
+      "A simple to use and open source fitness tracking application where you can log your workouts and see trends over time as well as keep track of weights used on various lifts. Includes a set timer with subtle audio or visual cues so you can focus on your workout. Available as a web app or native IOS/Android app.",
     images: [`${imageSource}/none`],
     technologies: ["React native", "nativewind", "expo", "supabase"],
     repoLink: "https://github.com/codeforpdx/codepdx_website",
@@ -143,41 +147,42 @@ export const mockProjects: Project[] = [
 ];
 
 export const technologies = [
-  "JavaScript",
-  "TypeScript",
-  "React",
-  "React Native",
-  "Express JS",
-  "Next.js",
-  "Node.js/Bun",
-  "Python",
-  "PostgreSQL",
-  "SQL",
-  "MongoDB",
+  "Arduino",
+  "AWS",
+  "Bash",
+  "BLE",
+  "CI/CD",
+  "Confluence",
+  "CSS",
   "Docker",
-  "Kubernetes",
+  "EdgeX",
+  "Expo",
+  "Express JS",
   "Git",
   "GitHub",
-  "Jira",
-  "Confluence",
-  "CI/CD",
-  "REST APIs",
-  "HTML",
-  "CSS",
-  "AWS",
-  "Tailwind CSS",
-  "Grafana",
-  "Redis",
-  "Vercel",
   "Google Cloud",
-  "Expo",
-  "Ollama",
-  "EdgeX",
+  "Grafana",
+  "HTML",
   "IOT",
-  "BLE",
+  "JavaScript",
+  "Jira",
+  "Kubernetes",
   "Linux",
-  "Bash",
+  "MongoDB",
+  "Next.js",
+  "Node.js/Bun",
+  "Ollama",
+  "PostgreSQL",
+  "Python",
+  "React",
+  "React Native",
+  "Redis",
+  "REST APIs",
   "Shell",
+  "SQL",
+  "Tailwind CSS",
+  "TypeScript",
+  "Vercel",
 ];
 
 export const githubStats = {
@@ -200,9 +205,9 @@ export const blogPosts: BlogPost[] = [
     id: "1",
     title: "Building a LinkedIn-Inspired Portfolio Website",
     excerpt: [
-      "Is a portfolio website necessary in 2025 (or 2026 since we are pretty much there).. I don't know. But... here we are. I built one anyway. Ta-da! Welcome to my little corner of the internet.",
+      "Is a portfolio website necessary in 2025 (or 2026 since we are pretty much there).. I don't know. But... here we are. I built one anyways.  Welcome to my little corner of the internet.",
       "Familiarity in tech is underrated, so I aimed to create a space that feels both personal and professional. I know its not revolutionary, but thats the point, I wanted something easy to digest. Now I can consolidate and showcase my projects as well as some insight to my life.",
-      "Anways, Thanks for stopping by! If you're a recruiter, employer or potential client looking to hire, let's chat. If you are another dev that wants to collaborate, has questions, or just want to network, reach out! I'm always open to connecting with like-minded folks in the tech community. My contact information can be found in the messaging section.",
+      "Anways, Thanks for stopping by! If you're a recruiter, employer or potential client looking to hire, let's chat. If you are another dev that wants to collaborate, has questions, or just want to network, reach out! I'm always open to connecting with like minded folks in the tech community. My contact information can be found in the messaging section.",
     ],
     date: "2025-12-13",
     image: `${imageSource}/portfolio-post.webp`,
@@ -227,9 +232,9 @@ export const blogPosts: BlogPost[] = [
     title:
       "Quitting Healthcare for Tech: My Journey from Paramedic to Software Engineer",
     excerpt: [
-      "For years, I worked as an EMT and eventually leveled up to a paramedic.. racing to emergencies, making split-second decisions amid chaos, and always trying to keep my cool. It was intensely rewarding, adrenaline fueled work that forged resilience, lightning fast problem solving, and the ability to communicate clearly when every second counted. After 7 years of endless shifts, multiple workplace injuries, and facing burnout, I knew it was time for a change.",
-      "Enter software engineering. With my father being a software engineer, I'd always been comfortable around computers.. building my own rigs, tweaking configs, subbing Windows for Linux, customizing everything in sight, and even dabbling in game development through modding existing ones. That latent tech curiosity finally took center stage. The transition wasn't easy: I traded stethoscopes for Stack Overflow, sirens for syntax errors, and late-night calls for even later-night debugging sessions (often questioning my new life choices). Sure.. the meaning of (a) code has changed quite a bit.",
-      "My education did not come in the form of a degree, although I had contemplated a coding bootcamp. Ultimately I decided to self-study through online resources like freecodecamp.com, youtube lessons & tutorials, and building small projects. The learning curve was steep, but persistence always pays off. I leaned heavily on stack overflow, and open source projects to accelerate my learning and gain practical experience. After moving from Connecticut to Oregon, I found a civic tech group CODE PDX which provided mentorship, community, and real world projects to contribute to.",
+      "For years, I worked as an EMT and eventually leveled up to a paramedic.. racing to emergencies, making split second decisions amid chaos, and always trying to keep my cool. It was intensely rewarding, adrenaline fueled work that forged resilience, lightning fast problem solving, and the ability to communicate clearly when every second counted. After 7 years of endless shifts, multiple workplace injuries, and facing burnout, I knew it was time for a change.",
+      "Enter software engineering. With my father being a software engineer, I'd always been comfortable around computers.. building my own rigs, tweaking configs, subbing Windows for Linux, customizing everything in sight, and even dabbling in game development through modding existing ones. That latent tech curiosity finally took center stage. The transition wasn't easy: I traded stethoscopes for Stack Overflow, sirens for syntax errors, and late night calls for even later night debugging sessions (often questioning my new life choices). Sure.. the meaning of (a) code has changed quite a bit.",
+      "My education did not come in the form of a degree, although I had contemplated a coding bootcamp. Ultimately I decided to self study through online resources like freecodecamp.com, youtube lessons & tutorials, and building small projects. The learning curve was steep, but persistence always pays off. I leaned heavily on stack overflow, and open source projects to accelerate my learning and gain practical experience. After moving from Connecticut to Oregon, I found a civic tech group CODE PDX which provided mentorship, community, and real world projects to contribute to.",
       "From CODE PDX, I landed my first full time engineering role as a contractor for an agTech startup LATERAL.systems where I worked with a small team over the course of a year and a half to build edge based IOT systems for continuous monitoring of ambient and water conditions for indoor growing systems. I offered system architecture design & guidance, set up our development environment and devOps, designed frontend assets, containerized edge applications, developed bluetooth interfacing, automated deployments to local linux servers and deployed the product on site at customer locations.",
       "Now, as a software engineer, I'm channeling that drive to help people in a new way: building tools and systems that make lives easier, safer, or just more efficient. If you're contemplating your own career pivot, take it from someone who went from ambulances to algorithms: if I can do it, anyone can.",
     ],

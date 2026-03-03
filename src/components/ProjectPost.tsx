@@ -217,6 +217,17 @@ export default function ProjectPost({ project }: ProjectPostProps) {
         <p className="text-sm text-gray-900 dark:text-white whitespace-pre-line">
           {project.description}
         </p>
+        {project.publicPackLink && (
+          <a
+            href={project.publicPackLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block mt-2 text-linkedin-blue hover:underline text-sm"
+          >
+            View Public Shared Pack Example
+            <ExternalLink className="inline ml-1 w-4 h-4 align-text-bottom" />
+          </a>
+        )}
         <div className="flex flex-wrap gap-2 mt-2">
           {project.technologies.map((tech) => (
             <span

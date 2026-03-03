@@ -69,13 +69,17 @@ export default function Resume() {
               SUMMARY
             </h2>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-sm">
-              Software engineer with 4+ years of experience owning backend and
-              distributed systems end to end, from architecture and API design
-              to deployment and production operations. Strong background in Go,
-              Python, and JavaScript, with experience building real time, data
-              driven services and automating CI/CD pipelines in Linux
-              environments. Known for ownership, adaptability, and delivering
-              reliable systems under pressure.
+              Software engineer with 4+ years of experience owning production
+              systems across embedded firmware, frontend and backend services,
+              and edge-based infrastructure. Led development of an end-to-end
+              IoT platform deployed in real-world pilots, with primary ownership
+              of CI/CD pipelines, Dockerized services, and Linux-based
+              deployment environments. Primary expertise in TypeScript and
+              JavaScript, with production experience using Go, Python, and C++
+              for backend services, automation, and embedded firmware.
+              Experienced in building device-to-edge data pipelines, real-time
+              sensor services, and developer tooling that enables reliable
+              iteration and deploymen.
             </p>
           </section>
 
@@ -86,30 +90,28 @@ export default function Resume() {
             </h2>
             <div className="space-y-1.5 text-gray-700 dark:text-gray-300 text-sm">
               <div>
-                <span className="font-semibold">Languages:</span> JavaScript
-                (ES6+), TypeScript, Go, Python, C++, Shell
+                <span className="font-semibold">Languages:</span> TypeScript,
+                JavaScript, Go, Python, C++ , Shell
               </div>
               <div>
-                <span className="font-semibold">Backend and APIs:</span>{" "}
-                Node.js, Bun, Express, Echo, REST APIs, WebSockets, OAuth, JWT,
-                Supabase
+                <span className="font-semibold">Systems & Infrastructure:</span>{" "}
+                Linux, Docker, Docker Compose, GitHub Actions, CI/CD, Makefiles
               </div>
               <div>
-                <span className="font-semibold">DevOps & Infrastructure:</span>{" "}
-                Git, Docker, GitHub Actions (CI/CD), Linux server automation,
-                VMs, Grafana
+                <span className="font-semibold">Backend & APIs:</span> REST
+                APIs, WebSockets, OAuth, JWT, Node.js, Bun, Echo, Express
               </div>
               <div>
                 <span className="font-semibold">Frontend:</span> React, React
-                Native, D3.js, Tailwind CSS, HTML5/CSS3
+                Native, Tailwind CSS, D3.js, HTML5/CSS3
               </div>
               <div>
-                <span className="font-semibold">Databases:</span> SQL, NoSQL,
+                <span className="font-semibold">Data:</span> SQL, NoSQL,
                 InfluxDB, Redis
               </div>
               <div>
-                <span className="font-semibold">IoT:</span> EdgeX Foundry,
-                Arduino, ESP32, MQTT, Bluetooth, WiFi
+                <span className="font-semibold">IoT & Embedded:</span> EdgeX
+                Foundry, Arduino, ESP32, MQTT, Bluetooth, WiFi
               </div>
             </div>
           </section>
@@ -139,35 +141,36 @@ export default function Resume() {
                 </div>
                 <ul className="list-disc list-inside space-y-0.5 text-gray-700 dark:text-gray-300 ml-4 text-sm">
                   <li>
-                    Led technical collaboration with engineers and scientists at
-                    an early-stage AgTech startup to evaluate feasibility,
-                    define technical goals, and establish delivery timelines for
-                    a new product prototype.
+                    Led development with engineers and scientists at an
+                    early-stage AgTech startup to define technical direction and
+                    deliver a production-ready IoT platform.
                   </li>
                   <li>
-                    Reassessed system architecture, technology stack, and
-                    development tooling, significantly reducing build times and
-                    enabling the first successful production deployment.
+                    Owned developer infrastructure and deployment workflows,
+                    including Docker-based service architecture, Makefile
+                    tooling, and fully automated CI/CD pipelines with image
+                    publishing and auto-deployment.
                   </li>
                   <li>
-                    Architected and automated Linux server deployments and CI/CD
-                    pipelines for Docker-based services, reducing deployment
-                    time by approximately 60%.
+                    Designed and implemented CI/CD pipelines from scratch using
+                    GitHub Actions, reducing deployment time by approximately
+                    60% and enabling rapid iteration across services and
+                    firmware components.
                   </li>
                   <li>
                     Developed resilient C++ firmware for Arduino and ESP32
-                    sensor platforms, implementing Bluetooth connectivity,
-                    MQTT-based communication, and automated device discovery.
+                    sensor platforms, implementing Bluetooth provisioning,
+                    MQTT-based device communication, and automated device
+                    discovery.
                   </li>
                   <li>
-                    Produced system diagrams and technical documentation that
-                    accelerated onboarding and enabled continued development
-                    after contract completion.
+                    Deployed the platform as an internal pilot and later
+                    delivered a customer-facing pilot supporting multiple sensor
+                    suites with heterogeneous sensors.
                   </li>
                   <li>
-                    Designed and deployed a scalable IoT platform using
-                    TypeScript and Go, including EdgeX Foundry configuration,
-                    integration testing, and production hardening.
+                    Produced system diagrams and technical documentation
+                    enabling knowledge transfer and continued development.
                   </li>
                 </ul>
               </div>
@@ -196,7 +199,7 @@ export default function Resume() {
                     projects.
                   </li>
                   <li>
-                    Designed, developed, and launched a React based organization
+                    Designed, developed, and deployed a React based organization
                     website, improving public visibility and streamlining
                     onboarding workflows, resulting in a 30% increase in monthly
                     contributors.
@@ -214,28 +217,20 @@ export default function Resume() {
             <div className="space-y-2">
               <div>
                 <p className="text-gray-700 dark:text-gray-300 text-sm">
-                  <span className="font-semibold">Pack-Pal:</span> Backpacking
-                  inventory and weight management platform built with TypeScript
-                  and React Native. Implemented drill-down data visualizations
-                  and cross-platform support for iOS, Android, and web, with
-                  authenticated user profiles and shareable configurations.
+                  <span className="font-semibold">Pack-Pal:</span>{" "}
+                  Cross-platform backpacking inventory and weight management
+                  application built with TypeScript and React Native. Designed
+                  drill-down data visualizations, offline-friendly data
+                  modeling, and authenticated user profiles with shareable
+                  configurations across iOS, Android, and web.
                 </p>
               </div>
               <div>
                 <p className="text-gray-700 dark:text-gray-300 text-sm">
-                  <span className="font-semibold">ATS-Buddy:</span> AI-powered
-                  resume tailoring tool that adapts resumes to job descriptions
-                  and URLs. Built in Python to automate resume editing and PDF
-                  formatting, improving ATS compatibility and reducing manual
-                  customization time.
-                </p>
-              </div>
-              <div>
-                <p className="text-gray-700 dark:text-gray-300 text-sm">
-                  <span className="font-semibold">CODE PDX Website:</span> Led
-                  Javascript-React based redesign and deployment of civic tech
-                  site; improved online presence and contributor onboarding. Set
-                  up CI/CD for community maintainability.
+                  <span className="font-semibold">ATS-Buddy:</span> Automated
+                  resume tailoring tool built in TypeScript & Python that parses
+                  job descriptions and URLs to generate ATS-optimized resumes
+                  and PDFs.
                 </p>
               </div>
             </div>
@@ -245,7 +240,7 @@ export default function Resume() {
 
       <div className="mt-6 flex items-center justify-center gap-4 text-sm text-gray-600 dark:text-gray-400">
         <FileText className="w-5 h-5" />
-        <span>Last updated: January 2026</span>
+        <span>Last updated: March 2026</span>
       </div>
     </div>
   );

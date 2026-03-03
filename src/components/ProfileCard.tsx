@@ -46,7 +46,7 @@ export default function ProfileCard({ stats }: ProfileCardProps) {
             Jared Krajewski
           </h2>
           <p className="text-[12px] text-gray-600 dark:text-gray-400 mt-1">
-            Full Stack Developer
+            Full Stack & IoT Developer
           </p>
           <p className="text-[12px] text-gray-500 dark:text-gray-500 mt-1">
             Portland, Oregon

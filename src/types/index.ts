@@ -11,6 +11,7 @@ export interface Project {
   repoLink?: string;
   postedDate: string;
   inDevelopment?: boolean;
+  publicPackLink?: string;
 }
 
 export interface GitHubStats {
