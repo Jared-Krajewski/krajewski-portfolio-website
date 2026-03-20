@@ -134,7 +134,7 @@ export default function Contact() {
             <p className="text-sm text-gray-600 dark:text-gray-400">
               Whether you're interested in hiring, collaboration, or just want
               to connect, I'm always happy to hear from fellow developers,
-              potential clients,or prospective employers.
+              potential clients, or prospective employers.
             </p>
           </div>
         </div>

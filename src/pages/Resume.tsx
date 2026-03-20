@@ -3,7 +3,7 @@ import { Download, FileText } from "lucide-react";
 export default function Resume() {
   const handleDownload = () => {
     const link = document.createElement("a");
-    link.href = "src/assets/resume/krajewski_resume.pdf#toolbar=0";
+    link.href = "/resume/krajewski_resume.pdf#toolbar=0";
     link.download = "Jared_Krajewski_Resume.pdf";
     document.body.appendChild(link);
     link.click();
@@ -71,15 +71,16 @@ export default function Resume() {
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-sm">
               Software engineer with 4+ years of experience owning production
               systems across embedded firmware, frontend and backend services,
-              and edge-based infrastructure. Led development of an end-to-end
-              IoT platform deployed in real-world pilots, with primary ownership
-              of CI/CD pipelines, Dockerized services, and Linux-based
-              deployment environments. Primary expertise in TypeScript and
-              JavaScript, with production experience using Go, Python, and C++
-              for backend services, automation, and embedded firmware.
-              Experienced in building device-to-edge data pipelines, real-time
+              and edge-based infrastructure after formerly working as a
+              paramedic. Led development of an end-to-end IoT platform deployed
+              in real-world pilots, with primary ownership of CI/CD pipelines,
+              Dockerized services, and Linux-based deployment environments.
+              Primary expertise in TypeScript and JavaScript, with production
+              experience using Go, Python, and C++ for backend services,
+              automation, and embedded firmware. Experienced in customer
+              communication, building device-to-edge data pipelines, real-time
               sensor services, and developer tooling that enables reliable
-              iteration and deploymen.
+              iteration and deployment.
             </p>
           </section>
 
@@ -95,7 +96,7 @@ export default function Resume() {
               </div>
               <div>
                 <span className="font-semibold">Systems & Infrastructure:</span>{" "}
-                Linux, Docker, Docker Compose, GitHub Actions, CI/CD, Makefiles
+                Linux, Docker, Docker Compose, GitHub Actions, CI/CD, Make
               </div>
               <div>
                 <span className="font-semibold">Backend & APIs:</span> REST
@@ -103,7 +104,7 @@ export default function Resume() {
               </div>
               <div>
                 <span className="font-semibold">Frontend:</span> React, React
-                Native, Tailwind CSS, D3.js, HTML5/CSS3
+                Native, Tailwind CSS, SVG, D3.js, HTML5/CSS3, Grafana
               </div>
               <div>
                 <span className="font-semibold">Data:</span> SQL, NoSQL,
@@ -147,15 +148,10 @@ export default function Resume() {
                   </li>
                   <li>
                     Owned developer infrastructure and deployment workflows,
-                    including Docker-based service architecture, Makefile
-                    tooling, and fully automated CI/CD pipelines with image
-                    publishing and auto-deployment.
-                  </li>
-                  <li>
-                    Designed and implemented CI/CD pipelines from scratch using
-                    GitHub Actions, reducing deployment time by approximately
-                    60% and enabling rapid iteration across services and
-                    firmware components.
+                    designing Docker-based microservices, Makefile tooling, and
+                    CI/CD pipelines with image publishing and pull-based
+                    deployment to edge systems, reducing deployment time by
+                    ~60%.
                   </li>
                   <li>
                     Developed resilient C++ firmware for Arduino and ESP32
@@ -166,7 +162,7 @@ export default function Resume() {
                   <li>
                     Deployed the platform as an internal pilot and later
                     delivered a customer-facing pilot supporting multiple sensor
-                    suites with heterogeneous sensors.
+                    suites with heterogeneous sensor suites.
                   </li>
                   <li>
                     Produced system diagrams and technical documentation
@@ -180,29 +176,35 @@ export default function Resume() {
                 <div className="flex justify-between items-start mb-1">
                   <div>
                     <h3 className="font-semibold text-gray-900 dark:text-white text-sm">
-                      Code PDX
+                      STERIS
                     </h3>
                     <p className="text-gray-600 dark:text-gray-400 text-sm italic">
-                      Software Engineer
+                      Field Service Representative
                     </p>
                   </div>
                   <div className="text-right text-gray-600 dark:text-gray-400 text-sm">
-                    <p>December 2022 - Current</p>
-                    <p>Portland, OR</p>
+                    <p>August 2019 - March 2022</p>
+                    <p>Hartford, CT</p>
                   </div>
                 </div>
                 <ul className="list-disc list-inside space-y-0.5 text-gray-700 dark:text-gray-300 ml-4 text-sm">
                   <li>
-                    Mentored and collaborated with volunteers across a wide
-                    range of skill levels, providing technical guidance and code
-                    reviews while contributing to community driven software
-                    projects.
+                    Owned customer relationships across a regional healthcare
+                    territory, serving as the primary point of contact for
+                    service and technical needs.
                   </li>
                   <li>
-                    Designed, developed, and deployed a React based organization
-                    website, improving public visibility and streamlining
-                    onboarding workflows, resulting in a 30% increase in monthly
-                    contributors.
+                    Proactively identified latent system vulnerabilities before
+                    customer detection, converting technical risks into
+                    qualified sales leads for equipment upgrades.
+                  </li>
+                  <li>
+                    Led discovery-driven conversations with clinical and
+                    administrative decision makers.
+                  </li>
+                  <li>
+                    Partnered with account managers to identify renewal,
+                    upgrade, and expansion opportunities.
                   </li>
                 </ul>
               </div>
@@ -219,15 +221,15 @@ export default function Resume() {
                 <p className="text-gray-700 dark:text-gray-300 text-sm">
                   <span className="font-semibold">Pack-Pal:</span>{" "}
                   Cross-platform backpacking inventory and weight management
-                  application built with TypeScript and React Native. Designed
+                  tool built with TypeScript and React Native. Designed
                   drill-down data visualizations, offline-friendly data
                   modeling, and authenticated user profiles with shareable
-                  configurations across iOS, Android, and web.
+                  configurations.
                 </p>
               </div>
               <div>
                 <p className="text-gray-700 dark:text-gray-300 text-sm">
-                  <span className="font-semibold">ATS-Buddy:</span> Automated
+                  <span className="font-semibold">ATS-Buddy:</span> AI powered
                   resume tailoring tool built in TypeScript & Python that parses
                   job descriptions and URLs to generate ATS-optimized resumes
                   and PDFs.

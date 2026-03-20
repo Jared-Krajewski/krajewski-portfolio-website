@@ -138,6 +138,12 @@ export default function ProjectPost({ project }: ProjectPostProps) {
     return `${Math.floor(diffDays / 30)}mo`;
   };
 
+  const getImageLayerClasses = (transitionClass = "") =>
+    `absolute inset-0 w-full h-full object-contain ${transitionClass}`.trim();
+
+  const getBackdropLayerClasses = (transitionClass = "") =>
+    `absolute inset-0 w-full h-full object-cover scale-110 blur-2xl opacity-40 ${transitionClass}`.trim();
+
   // Prefetch the next carousel image to reduce flicker during transitions
   useEffect(() => {
     if (!project.images || project.images.length === 0) return;
@@ -246,45 +252,70 @@ export default function ProjectPost({ project }: ProjectPostProps) {
           className="relative bg-black group overflow-hidden h-[500px] flex items-center justify-center cursor-zoom-in"
           onClick={() => setShowImageModal(true)}
         >
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/60" />
           <div className="relative w-full h-full">
             {!isTransitioning ? (
-              <img
-                src={project.images[currentImageIndex]}
-                alt={`${project.name} screenshot ${currentImageIndex + 1}`}
-                loading="eager"
-                decoding="async"
-                className={
-                  project.id === "1"
-                    ? "absolute inset-0 w-full h-full object-contain"
-                    : "absolute inset-0 w-full h-full object-cover object-top"
-                }
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.src =
-                    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='400'%3E%3Crect width='800' height='400' fill='%23e5e7eb'/%3E%3Ctext x='400' y='300' font-size='24' fill='%239ca3af' text-anchor='middle' dominant-baseline='middle' font-family='Arial'%3EImage not found%3C/text%3E%3C/svg%3E";
-                }}
-              />
+              <>
+                <img
+                  src={project.images[currentImageIndex]}
+                  alt=""
+                  aria-hidden="true"
+                  loading="eager"
+                  decoding="async"
+                  className={getBackdropLayerClasses()}
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src =
+                      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='400'%3E%3Crect width='800' height='400' fill='%23e5e7eb'/%3E%3Ctext x='400' y='300' font-size='24' fill='%239ca3af' text-anchor='middle' dominant-baseline='middle' font-family='Arial'%3EImage not found%3C/text%3E%3C/svg%3E";
+                  }}
+                />
+                <img
+                  src={project.images[currentImageIndex]}
+                  alt={`${project.name} screenshot ${currentImageIndex + 1}`}
+                  loading="eager"
+                  decoding="async"
+                  className={getImageLayerClasses()}
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src =
+                      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='400'%3E%3Crect width='800' height='400' fill='%23e5e7eb'/%3E%3Ctext x='400' y='300' font-size='24' fill='%239ca3af' text-anchor='middle' dominant-baseline='middle' font-family='Arial'%3EImage not found%3C/text%3E%3C/svg%3E";
+                  }}
+                />
+              </>
             ) : (
               <>
                 {/* Outgoing image */}
                 <img
                   src={project.images[outgoingImageIndex]}
+                  alt=""
+                  aria-hidden="true"
+                  loading="eager"
+                  decoding="async"
+                  className={getBackdropLayerClasses(
+                    `transition-transform duration-300 ${
+                      slideDirection === "right"
+                        ? "-translate-x-full"
+                        : "translate-x-full"
+                    }`,
+                  )}
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src =
+                      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='400'%3E%3Crect width='800' height='400' fill='%23e5e7eb'/%3E%3Ctext x='400' y='200' font-size='24' fill='%239ca3af' text-anchor='middle' dominant-baseline='middle' font-family='Arial'%3EImage not found%3C/text%3E%3C/svg%3E";
+                  }}
+                />
+                <img
+                  src={project.images[outgoingImageIndex]}
                   alt={`${project.name} screenshot ${outgoingImageIndex + 1}`}
                   loading="eager"
                   decoding="async"
-                  className={
-                    project.id === "1"
-                      ? `absolute inset-0 w-full h-full object-contain transition-transform duration-300 ${
-                          slideDirection === "right"
-                            ? "-translate-x-full"
-                            : "translate-x-full"
-                        }`
-                      : `absolute inset-0 w-full h-full object-cover object-top transition-transform duration-300 ${
-                          slideDirection === "right"
-                            ? "-translate-x-full"
-                            : "translate-x-full"
-                        }`
-                  }
+                  className={getImageLayerClasses(
+                    `transition-transform duration-300 ${
+                      slideDirection === "right"
+                        ? "-translate-x-full"
+                        : "translate-x-full"
+                    }`,
+                  )}
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.src =
@@ -295,26 +326,39 @@ export default function ProjectPost({ project }: ProjectPostProps) {
                 {/* Incoming image */}
                 <img
                   src={project.images[nextImageIndex]}
+                  alt=""
+                  aria-hidden="true"
+                  loading="eager"
+                  decoding="async"
+                  className={getBackdropLayerClasses(
+                    `transition-transform duration-300 ${
+                      animateIn
+                        ? "translate-x-0"
+                        : slideDirection === "right"
+                          ? "translate-x-full"
+                          : "-translate-x-full"
+                    }`,
+                  )}
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src =
+                      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='400'%3E%3Crect width='800' height='400' fill='%23e5e7eb'/%3E%3Ctext x='400' y='200' font-size='24' fill='%239ca3af' text-anchor='middle' dominant-baseline='middle' font-family='Arial'%3EImage not found%3C/text%3E%3C/svg%3E";
+                  }}
+                />
+                <img
+                  src={project.images[nextImageIndex]}
                   alt={`${project.name} screenshot ${nextImageIndex + 1}`}
                   loading="eager"
                   decoding="async"
-                  className={
-                    project.id === "1"
-                      ? `absolute inset-0 w-full h-full object-contain transition-transform duration-300 ${
-                          animateIn
-                            ? "translate-x-0"
-                            : slideDirection === "right"
-                              ? "translate-x-full"
-                              : "-translate-x-full"
-                        }`
-                      : `absolute inset-0 w-full h-full object-cover object-top transition-transform duration-300 ${
-                          animateIn
-                            ? "translate-x-0"
-                            : slideDirection === "right"
-                              ? "translate-x-full"
-                              : "-translate-x-full"
-                        }`
-                  }
+                  className={getImageLayerClasses(
+                    `transition-transform duration-300 ${
+                      animateIn
+                        ? "translate-x-0"
+                        : slideDirection === "right"
+                          ? "translate-x-full"
+                          : "-translate-x-full"
+                    }`,
+                  )}
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.src =
