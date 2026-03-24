@@ -47,11 +47,12 @@ export const mockProjects: Project[] = [
       "https://pack-pal-gamma.vercel.app/pack/34f20d94-34a2-4775-8f9a-01b8f1e96125",
     images: [
       `${imageSource}/pack-pal-1.webp`,
-      `${imageSource}/pack-pal-2.webp`,
+      "https://pztjfyvixtxmr1d3.public.blob.vercel-storage.com/pack_pal_organize_feature.webm",
       `${imageSource}/pack-pal-3.webp`,
-      `${imageSource}/pack-pal-4.gif`,
+      `${imageSource}/pack-pal-4.webp`,
       `${imageSource}/pack-pal-5.webp`,
     ],
+    initialMediaIndex: 1,
     technologies: [
       "React Native",
       "nativewind",

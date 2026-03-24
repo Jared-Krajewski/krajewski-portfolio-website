@@ -20,8 +20,21 @@ interface ProjectPostProps {
   project: Project;
 }
 
+const isVideoMedia = (src: string) => /\.webm($|\?)/i.test(src);
+
+const createFallbackImage = (message: string, width = 800, height = 400) =>
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='" +
+  width +
+  "' height='" +
+  height +
+  "'%3E%3Crect width='100%25' height='100%25' fill='%23e5e7eb'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='%239ca3af' text-anchor='middle' dominant-baseline='middle' font-family='Arial'%3E" +
+  message +
+  "%3C/text%3E%3C/svg%3E";
+
 export default function ProjectPost({ project }: ProjectPostProps) {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState(
+    project.initialMediaIndex ?? 0,
+  );
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [slideDirection, setSlideDirection] = useState<"left" | "right">(
     "right",
@@ -46,6 +59,75 @@ export default function ProjectPost({ project }: ProjectPostProps) {
   });
   const shareMenuRef = useRef<HTMLDivElement>(null);
   const sendMenuRef = useRef<HTMLDivElement>(null);
+
+  const currentMedia = project.images[currentImageIndex];
+  const outgoingMedia = project.images[outgoingImageIndex];
+  const incomingMedia = project.images[nextImageIndex];
+
+  const renderImage = (
+    src: string,
+    alt: string,
+    className: string,
+    decorative = false,
+  ) => (
+    <img
+      src={src}
+      alt={decorative ? "" : alt}
+      aria-hidden={decorative}
+      loading="eager"
+      decoding="async"
+      className={className}
+      onError={(e) => {
+        const target = e.target as HTMLImageElement;
+        target.src = createFallbackImage("Image not found");
+      }}
+    />
+  );
+
+  const renderVideo = (
+    src: string,
+    label: string,
+    className: string,
+    decorative = false,
+  ) => (
+    <video
+      src={src}
+      aria-hidden={decorative}
+      aria-label={decorative ? undefined : label}
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      className={className}
+      onClick={(e) => {
+        if (decorative) {
+          e.preventDefault();
+        }
+      }}
+    />
+  );
+
+  const renderMediaLayer = (
+    src: string,
+    label: string,
+    layerClassName: string,
+    decorative = false,
+  ) =>
+    isVideoMedia(src)
+      ? renderVideo(src, label, layerClassName, decorative)
+      : renderImage(src, label, layerClassName, decorative);
+
+  const renderCarouselMedia = (src: string, index: number, transitionClass = "") => {
+    const label = `${project.name} media ${index + 1}`;
+
+    return (
+      <>
+        {renderMediaLayer(src, label, getBackdropLayerClasses(transitionClass), true)}
+        {renderMediaLayer(src, label, getImageLayerClasses(transitionClass), false)}
+      </>
+    );
+  };
 
   // Close menus when clicking outside
   useEffect(() => {
@@ -144,12 +226,14 @@ export default function ProjectPost({ project }: ProjectPostProps) {
   const getBackdropLayerClasses = (transitionClass = "") =>
     `absolute inset-0 w-full h-full object-cover scale-110 blur-2xl opacity-40 ${transitionClass}`.trim();
 
-  // Prefetch the next carousel image to reduce flicker during transitions
+  // Prefetch the next carousel image to reduce flicker during transitions.
   useEffect(() => {
     if (!project.images || project.images.length === 0) return;
     const nextIdx = (currentImageIndex + 1) % project.images.length;
+    const nextMedia = project.images[nextIdx];
+    if (isVideoMedia(nextMedia)) return;
     const img = new Image();
-    img.src = project.images[nextIdx];
+    img.src = nextMedia;
     return () => {
       // release reference
       // eslint-disable-next-line @typescript-eslint/no-unused-expressions
@@ -176,6 +260,7 @@ export default function ProjectPost({ project }: ProjectPostProps) {
           </span>
         </div>
       )}
+
       {/* Header */}
       <div className="px-4 pt-3 pb-2">
         <div className="flex items-start justify-between">
@@ -255,116 +340,30 @@ export default function ProjectPost({ project }: ProjectPostProps) {
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/60" />
           <div className="relative w-full h-full">
             {!isTransitioning ? (
-              <>
-                <img
-                  src={project.images[currentImageIndex]}
-                  alt=""
-                  aria-hidden="true"
-                  loading="eager"
-                  decoding="async"
-                  className={getBackdropLayerClasses()}
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src =
-                      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='400'%3E%3Crect width='800' height='400' fill='%23e5e7eb'/%3E%3Ctext x='400' y='300' font-size='24' fill='%239ca3af' text-anchor='middle' dominant-baseline='middle' font-family='Arial'%3EImage not found%3C/text%3E%3C/svg%3E";
-                  }}
-                />
-                <img
-                  src={project.images[currentImageIndex]}
-                  alt={`${project.name} screenshot ${currentImageIndex + 1}`}
-                  loading="eager"
-                  decoding="async"
-                  className={getImageLayerClasses()}
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src =
-                      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='400'%3E%3Crect width='800' height='400' fill='%23e5e7eb'/%3E%3Ctext x='400' y='300' font-size='24' fill='%239ca3af' text-anchor='middle' dominant-baseline='middle' font-family='Arial'%3EImage not found%3C/text%3E%3C/svg%3E";
-                  }}
-                />
-              </>
+              renderCarouselMedia(currentMedia, currentImageIndex)
             ) : (
               <>
-                {/* Outgoing image */}
-                <img
-                  src={project.images[outgoingImageIndex]}
-                  alt=""
-                  aria-hidden="true"
-                  loading="eager"
-                  decoding="async"
-                  className={getBackdropLayerClasses(
-                    `transition-transform duration-300 ${
-                      slideDirection === "right"
-                        ? "-translate-x-full"
-                        : "translate-x-full"
-                    }`,
-                  )}
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src =
-                      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='400'%3E%3Crect width='800' height='400' fill='%23e5e7eb'/%3E%3Ctext x='400' y='200' font-size='24' fill='%239ca3af' text-anchor='middle' dominant-baseline='middle' font-family='Arial'%3EImage not found%3C/text%3E%3C/svg%3E";
-                  }}
-                />
-                <img
-                  src={project.images[outgoingImageIndex]}
-                  alt={`${project.name} screenshot ${outgoingImageIndex + 1}`}
-                  loading="eager"
-                  decoding="async"
-                  className={getImageLayerClasses(
-                    `transition-transform duration-300 ${
-                      slideDirection === "right"
-                        ? "-translate-x-full"
-                        : "translate-x-full"
-                    }`,
-                  )}
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src =
-                      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='400'%3E%3Crect width='800' height='400' fill='%23e5e7eb'/%3E%3Ctext x='400' y='200' font-size='24' fill='%239ca3af' text-anchor='middle' dominant-baseline='middle' font-family='Arial'%3EImage not found%3C/text%3E%3C/svg%3E";
-                  }}
-                />
+                {renderCarouselMedia(
+                  outgoingMedia,
+                  outgoingImageIndex,
+                  `transition-transform duration-300 ${
+                    slideDirection === "right"
+                      ? "-translate-x-full"
+                      : "translate-x-full"
+                  }`,
+                )}
 
-                {/* Incoming image */}
-                <img
-                  src={project.images[nextImageIndex]}
-                  alt=""
-                  aria-hidden="true"
-                  loading="eager"
-                  decoding="async"
-                  className={getBackdropLayerClasses(
-                    `transition-transform duration-300 ${
-                      animateIn
-                        ? "translate-x-0"
-                        : slideDirection === "right"
-                          ? "translate-x-full"
-                          : "-translate-x-full"
-                    }`,
-                  )}
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src =
-                      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='400'%3E%3Crect width='800' height='400' fill='%23e5e7eb'/%3E%3Ctext x='400' y='200' font-size='24' fill='%239ca3af' text-anchor='middle' dominant-baseline='middle' font-family='Arial'%3EImage not found%3C/text%3E%3C/svg%3E";
-                  }}
-                />
-                <img
-                  src={project.images[nextImageIndex]}
-                  alt={`${project.name} screenshot ${nextImageIndex + 1}`}
-                  loading="eager"
-                  decoding="async"
-                  className={getImageLayerClasses(
-                    `transition-transform duration-300 ${
-                      animateIn
-                        ? "translate-x-0"
-                        : slideDirection === "right"
-                          ? "translate-x-full"
-                          : "-translate-x-full"
-                    }`,
-                  )}
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src =
-                      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='400'%3E%3Crect width='800' height='400' fill='%23e5e7eb'/%3E%3Ctext x='400' y='200' font-size='24' fill='%239ca3af' text-anchor='middle' dominant-baseline='middle' font-family='Arial'%3EImage not found%3C/text%3E%3C/svg%3E";
-                  }}
-                />
+                {renderCarouselMedia(
+                  incomingMedia,
+                  nextImageIndex,
+                  `transition-transform duration-300 ${
+                    animateIn
+                      ? "translate-x-0"
+                      : slideDirection === "right"
+                        ? "translate-x-full"
+                        : "-translate-x-full"
+                  }`,
+                )}
               </>
             )}
           </div>
@@ -406,7 +405,7 @@ export default function ProjectPost({ project }: ProjectPostProps) {
                         ? "bg-white w-6"
                         : "bg-white/60 hover:bg-white/80"
                     }`}
-                    aria-label={`Go to image ${index + 1}`}
+                    aria-label={`Go to media ${index + 1}`}
                   />
                 ))}
               </div>
@@ -569,7 +568,7 @@ export default function ProjectPost({ project }: ProjectPostProps) {
         </div>
       </div>
 
-      {/* Full Size Image Modal */}
+      {/* Full Size Media Modal */}
       {showImageModal && (
         <div
           className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
@@ -594,12 +593,30 @@ export default function ProjectPost({ project }: ProjectPostProps) {
               />
             </svg>
           </button>
-          <img
-            src={project.images[currentImageIndex]}
-            alt={`${project.name} full size`}
-            className="max-w-full max-h-full object-contain cursor-zoom-out"
-            onClick={() => setShowImageModal(false)}
-          />
+          {isVideoMedia(currentMedia) ? (
+            <video
+              src={currentMedia}
+              aria-label={`${project.name} full size video`}
+              autoPlay
+              loop
+              muted
+              playsInline
+              controls
+              className="max-w-full max-h-full object-contain cursor-zoom-out"
+              onClick={() => setShowImageModal(false)}
+            />
+          ) : (
+            <img
+              src={currentMedia}
+              alt={`${project.name} full size`}
+              className="max-w-full max-h-full object-contain cursor-zoom-out"
+              onClick={() => setShowImageModal(false)}
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.src = createFallbackImage("Image not found");
+              }}
+            />
+          )}
         </div>
       )}
     </article>

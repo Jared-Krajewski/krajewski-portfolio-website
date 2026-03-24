@@ -6,6 +6,7 @@ export interface Project {
   commentLink?: string;
   description: string;
   images: string[];
+  initialMediaIndex?: number;
   technologies: string[];
   liveDemo?: string;
   repoLink?: string;
