@@ -2,11 +2,11 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Search as SearchIcon, X } from "lucide-react";
 import {
-  mockProjects,
-  technologies,
+  projectsByMostRecent,
   blogPosts,
   type BlogPost,
 } from "../data/portfolioData";
+import { allTechnologies } from "../data/technologiesData";
 
 interface SearchResult {
   type: "project" | "blog" | "technology" | "page";
@@ -75,12 +75,12 @@ export default function Search() {
       });
 
       // Search projects
-      mockProjects.forEach((project) => {
+      projectsByMostRecent.forEach((project) => {
         if (
           project.name.toLowerCase().includes(searchQuery) ||
           project.description.toLowerCase().includes(searchQuery) ||
           project.technologies.some((tech) =>
-            tech.toLowerCase().includes(searchQuery)
+            tech.toLowerCase().includes(searchQuery),
           )
         ) {
           foundResults.push({
@@ -112,7 +112,7 @@ export default function Search() {
       });
 
       // Search technologies
-      technologies.forEach((tech) => {
+      allTechnologies.forEach((tech) => {
         if (tech.toLowerCase().includes(searchQuery)) {
           foundResults.push({
             type: "technology",
@@ -202,7 +202,7 @@ export default function Search() {
                       </div>
                       <span
                         className={`shrink-0 px-2 py-0.5 text-[10px] font-semibold rounded uppercase ${getTypeColor(
-                          result.type
+                          result.type,
                         )}`}
                       >
                         {result.type}

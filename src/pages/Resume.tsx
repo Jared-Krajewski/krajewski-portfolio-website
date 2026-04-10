@@ -142,7 +142,7 @@ export default function Resume() {
                 </div>
                 <ul className="list-disc list-inside space-y-0.5 text-gray-700 dark:text-gray-300 ml-4 text-sm">
                   <li>
-                    Led development with engineers and scientists at an
+                    Led development with engineers and researchers at an
                     early-stage AgTech startup to define technical direction and
                     deliver a production-ready IoT platform.
                   </li>
@@ -219,20 +219,22 @@ export default function Resume() {
             <div className="space-y-2">
               <div>
                 <p className="text-gray-700 dark:text-gray-300 text-sm">
-                  <span className="font-semibold">Pack-Pal:</span>{" "}
+                  <span className="font-semibold">
+                    CodePDX - Civic Tech Volunteer:
+                  </span>{" "}
+                  Designed and developed a React-based organization website,
+                  improving onboarding and increasing contributor participation
+                  while collaborating on community-driven open-source projects.
+                </p>
+              </div>
+              <div>
+                <p className="text-gray-700 dark:text-gray-300 text-sm">
+                  <span className="font-semibold">trailscale:</span>{" "}
                   Cross-platform backpacking inventory and weight management
                   tool built with TypeScript and React Native. Designed
                   drill-down data visualizations, offline-friendly data
                   modeling, and authenticated user profiles with shareable
                   configurations.
-                </p>
-              </div>
-              <div>
-                <p className="text-gray-700 dark:text-gray-300 text-sm">
-                  <span className="font-semibold">ATS-Buddy:</span> AI powered
-                  resume tailoring tool built in TypeScript & Python that parses
-                  job descriptions and URLs to generate ATS-optimized resumes
-                  and PDFs.
                 </p>
               </div>
             </div>

@@ -1,13 +1,8 @@
 import { Link } from "react-router-dom";
 import { blogPosts } from "../data/portfolioData";
+import { technologyGroups } from "../data/technologiesData";
 
-interface TechnologiesSidebarProps {
-  technologies: string[];
-}
-
-export default function TechnologiesSidebar({
-  technologies,
-}: TechnologiesSidebarProps) {
+export default function TechnologiesSidebar() {
   // Get the 3 most recent blog posts
   const recentPosts = blogPosts.slice(0, 3);
 
@@ -84,15 +79,33 @@ export default function TechnologiesSidebar({
         </div>
 
         <div className="p-3">
-          <div className="flex flex-wrap gap-2 justify-center">
-            {technologies.map((tech) => (
-              <span
-                key={tech}
-                className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs rounded-full transition-colors"
-              >
-                {tech}
-              </span>
-            ))}
+          <div className="space-y-4">
+            {technologyGroups.map((group) => {
+              const GroupIcon = group.icon;
+
+              return (
+                <section key={group.title} className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <GroupIcon className="w-4 h-4 text-linkedin-blue" />
+                    <h3 className="text-xs font-semibold uppercase tracking-[0.16em] text-gray-500 dark:text-gray-400">
+                      {group.title}
+                    </h3>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2">
+                    {group.items.map((tech) => (
+                      <span
+                        key={tech}
+                        className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs rounded-full transition-colors"
+                      >
+                        <GroupIcon className="w-3.5 h-3.5 text-linkedin-blue/80" />
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </section>
+              );
+            })}
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import ProjectPost from "../components/ProjectPost";
-import { mockProjects } from "../data/portfolioData";
+import { projectsByMostRecent } from "../data/portfolioData";
 import { useLocation } from "react-router-dom";
 
 export default function Projects() {
@@ -13,7 +13,7 @@ export default function Projects() {
 
   useEffect(() => {
     if (projectName) {
-      const idx = mockProjects.findIndex(
+      const idx = projectsByMostRecent.findIndex(
         (p) =>
           p.name.replace(/[^a-zA-Z0-9]/g, "").toLowerCase() === projectName,
       );
@@ -46,7 +46,7 @@ export default function Projects() {
       </motion.div>
 
       <div className="space-y-4 max-w-[1200px] mx-auto">
-        {mockProjects.map((project, index) => {
+        {projectsByMostRecent.map((project, index) => {
           const normalizedName = project.name
             .replace(/[^a-zA-Z0-9]/g, "")
             .toLowerCase();

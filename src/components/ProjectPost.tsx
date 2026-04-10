@@ -3,6 +3,9 @@ import type { Project } from "../types";
 import {
   ExternalLink,
   Github,
+  Globe,
+  Apple,
+  Play,
   ChevronLeft,
   ChevronRight,
   MoreHorizontal,
@@ -10,17 +13,31 @@ import {
   MessageCircle,
   Share2,
   Send,
-  Link as LinkIcon,
   Mail,
   Copy,
   Check,
+  type LucideIcon,
 } from "lucide-react";
 
 interface ProjectPostProps {
   project: Project;
 }
 
+type ProjectLinkKey = "website" | "apple" | "android";
+type ShareLinkKey = ProjectLinkKey | "repo";
+
+interface ProjectLinkItem {
+  key: ProjectLinkKey;
+  label: string;
+  href: string;
+  icon: LucideIcon;
+  headerText: string;
+}
+
 const isVideoMedia = (src: string) => /\.webm($|\?)/i.test(src);
+
+const formatUrlForDisplay = (url: string) =>
+  url.replace(/^https?:\/\//, "").replace(/\/$/, "");
 
 const createFallbackImage = (message: string, width = 800, height = 400) =>
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='" +
@@ -44,7 +61,7 @@ export default function ProjectPost({ project }: ProjectPostProps) {
   const [animateIn, setAnimateIn] = useState(false);
   const [showShareMenu, setShowShareMenu] = useState(false);
   const [showSendMenu, setShowSendMenu] = useState(false);
-  const [copiedShare, setCopiedShare] = useState<"demo" | "repo" | null>(null);
+  const [copiedShare, setCopiedShare] = useState<ShareLinkKey | null>(null);
   const [showImageModal, setShowImageModal] = useState(false);
   const [liked, setLiked] = useState(() => {
     try {
@@ -59,6 +76,59 @@ export default function ProjectPost({ project }: ProjectPostProps) {
   });
   const shareMenuRef = useRef<HTMLDivElement>(null);
   const sendMenuRef = useRef<HTMLDivElement>(null);
+  const projectLinks: ProjectLinkItem[] = [
+    project.link?.trim()
+      ? {
+          key: "website",
+          label: "Website",
+          href: project.link,
+          icon: Globe,
+          headerText: formatUrlForDisplay(project.link),
+        }
+      : null,
+    project.appleLink?.trim()
+      ? {
+          key: "apple",
+          label: "App Store",
+          href: project.appleLink,
+          icon: Apple,
+          headerText: "App Store",
+        }
+      : null,
+    project.androidLink?.trim()
+      ? {
+          key: "android",
+          label: "Android",
+          href: project.androidLink,
+          icon: Play,
+          headerText: "Android",
+        }
+      : null,
+  ].filter((projectLink): projectLink is ProjectLinkItem => Boolean(projectLink));
+  const shareLinks = project.repoLink?.trim()
+    ? [
+        ...projectLinks,
+        {
+          key: "repo" as const,
+          label: "Repository",
+          href: project.repoLink,
+          icon: Github,
+          headerText: "Repository",
+        },
+      ]
+    : projectLinks;
+  const emailShareHref = `mailto:?subject=${encodeURIComponent(
+    `Check out ${project.name}`,
+  )}&body=${encodeURIComponent(
+    [
+      `I thought you might be interested in this project: ${project.name}`,
+      "",
+      project.description,
+      "",
+      ...projectLinks.map(({ label, href }) => `${label}: ${href}`),
+      ...(project.repoLink ? [`Repository: ${project.repoLink}`] : []),
+    ].join("\n"),
+  )}`;
 
   const currentMedia = project.images[currentImageIndex];
   const outgoingMedia = project.images[outgoingImageIndex];
@@ -165,7 +235,7 @@ export default function ProjectPost({ project }: ProjectPostProps) {
     });
   };
 
-  const copyToClipboard = async (text: string, which: "demo" | "repo") => {
+  const copyToClipboard = async (text: string, which: ShareLinkKey) => {
     try {
       await navigator.clipboard.writeText(text);
       setCopiedShare(which);
@@ -283,15 +353,27 @@ export default function ProjectPost({ project }: ProjectPostProps) {
               <h3 className="font-semibold text-sm text-gray-900 dark:text-white hover:underline cursor-pointer">
                 {project.name}
               </h3>
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs text-gray-600 dark:text-gray-400 hover:text-linkedin-blue hover:underline flex items-center gap-1"
-              >
-                {project.link.replace("https://", "")}
-                <ExternalLink className="w-3 h-3" />
-              </a>
+              {projectLinks.length > 0 && (
+                <div className="mt-0.5 flex flex-wrap items-center gap-x-3 gap-y-1">
+                  {projectLinks.map((projectLink) => {
+                    const Icon = projectLink.icon;
+
+                    return (
+                      <a
+                        key={projectLink.key}
+                        href={projectLink.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs text-gray-600 dark:text-gray-400 hover:text-linkedin-blue hover:underline inline-flex items-center gap-1.5"
+                      >
+                        <Icon className="w-3.5 h-3.5" />
+                        {projectLink.headerText}
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    );
+                  })}
+                </div>
+              )}
               <p className="text-xs text-gray-600 dark:text-gray-400 mt-0.5">
                 {formatDate(project.postedDate)} • 🌐
               </p>
@@ -416,28 +498,42 @@ export default function ProjectPost({ project }: ProjectPostProps) {
 
       {/* Action Buttons */}
       <div className="px-4 py-2 border-t border-gray-200 dark:border-gray-700">
-        <div className="flex gap-2 mb-3">
-          <a
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-linkedin-blue text-white rounded hover:bg-blue-700 transition-colors text-sm font-semibold"
-          >
-            <ExternalLink className="w-4 h-4" />
-            Live Demo
-          </a>
+        {(projectLinks.length > 0 || project.repoLink) && (
+          <div className="flex flex-wrap gap-2 mb-3">
+            {projectLinks.map((projectLink) => {
+              const Icon = projectLink.icon;
+              const isWebsiteLink = projectLink.key === "website";
+
+              return (
+                <a
+                  key={projectLink.key}
+                  href={projectLink.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`flex-1 min-w-[140px] flex items-center justify-center gap-2 px-4 py-2 rounded transition-colors text-sm font-semibold ${
+                    isWebsiteLink
+                      ? "bg-linkedin-blue text-white hover:bg-blue-700"
+                      : "border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                  }`}
+                >
+                  <Icon className="w-4 h-4" />
+                  {projectLink.label}
+                </a>
+              );
+            })}
           {project.repoLink && (
             <a
               href={project.repoLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-sm font-semibold"
+              className="flex-1 min-w-[140px] flex items-center justify-center gap-2 px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-sm font-semibold"
             >
               <Github className="w-4 h-4" />
               Repository
             </a>
           )}
-        </div>
+          </div>
+        )}
 
         {/* Social Interactions */}
         <div className="flex items-center justify-between pt-2 border-t border-gray-200 dark:border-gray-700">
@@ -485,54 +581,35 @@ export default function ProjectPost({ project }: ProjectPostProps) {
             {showShareMenu && (
               <div className="absolute bottom-full right-0 mb-2 w-64 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-10">
                 <div className="p-2">
-                  <div className="flex items-center gap-2">
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 flex items-center gap-3 px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded transition-colors"
-                    >
-                      <LinkIcon className="w-4 h-4" />
-                      <span>Live Demo</span>
-                    </a>
-                    <button
-                      onClick={() => copyToClipboard(project.link, "demo")}
-                      className="p-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded transition-colors"
-                      aria-label="Copy live demo link"
-                    >
-                      {copiedShare === "demo" ? (
-                        <Check className="w-4 h-4 text-green-500" />
-                      ) : (
-                        <Copy className="w-4 h-4" />
-                      )}
-                    </button>
-                  </div>
-                  {project.repoLink && (
+                  {shareLinks.map((shareLink) => {
+                    const Icon = shareLink.icon;
+
+                    return (
                     <div className="flex items-center gap-2">
                       <a
-                        href={project.repoLink}
+                        key={shareLink.key}
+                        href={shareLink.href}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex-1 flex items-center gap-3 px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded transition-colors"
                       >
-                        <Github className="w-4 h-4" />
-                        <span>Repository</span>
+                        <Icon className="w-4 h-4" />
+                        <span>{shareLink.label}</span>
                       </a>
                       <button
-                        onClick={() =>
-                          copyToClipboard(project.repoLink || "", "repo")
-                        }
+                        onClick={() => copyToClipboard(shareLink.href, shareLink.key)}
                         className="p-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded transition-colors"
-                        aria-label="Copy repository link"
+                        aria-label={`Copy ${shareLink.label.toLowerCase()} link`}
                       >
-                        {copiedShare === "repo" ? (
+                        {copiedShare === shareLink.key ? (
                           <Check className="w-4 h-4 text-green-500" />
                         ) : (
                           <Copy className="w-4 h-4" />
                         )}
                       </button>
                     </div>
-                  )}
+                    );
+                  })}
                 </div>
               </div>
             )}
@@ -555,7 +632,7 @@ export default function ProjectPost({ project }: ProjectPostProps) {
               <div className="absolute bottom-full right-0 mb-2 w-64 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-10">
                 <div className="p-2">
                   <a
-                    href={`mailto:?subject=Check out ${project.name}&body=I thought you might be interested in this project: ${project.name}%0A%0A${project.description}%0A%0ACheck it out here: ${project.link}`}
+                    href={emailShareHref}
                     className="flex items-center gap-3 px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded transition-colors"
                   >
                     <Mail className="w-4 h-4" />

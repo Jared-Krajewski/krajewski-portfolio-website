@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import ProfileCard from "../components/ProfileCard";
 import TechnologiesSidebar from "../components/TechnologiesSidebar";
 import ProjectPost from "../components/ProjectPost";
-import { mockProjects, technologies, githubStats } from "../data/portfolioData";
+import { projectsByMostRecent, githubStats } from "../data/portfolioData";
 import { fetchGitHubStats } from "../utils/githubApi";
 import type { GitHubStats } from "../types";
 
@@ -48,7 +48,7 @@ export default function Home() {
           className="lg:col-span-7"
         >
           <div className="space-y-4">
-            {mockProjects.map((project) => (
+            {projectsByMostRecent.map((project) => (
               <ProjectPost key={project.id} project={project} />
             ))}
           </div>
@@ -63,7 +63,7 @@ export default function Home() {
           className="lg:col-span-3"
         >
           <div className="sticky top-[68px]">
-            <TechnologiesSidebar technologies={technologies} />
+            <TechnologiesSidebar />
           </div>
         </motion.aside>
       </div>

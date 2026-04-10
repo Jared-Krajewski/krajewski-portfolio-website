@@ -2,7 +2,9 @@ export interface Project {
   id: string;
   name: string;
   logo: string;
-  link: string;
+  link?: string;
+  appleLink?: string;
+  androidLink?: string;
   commentLink?: string;
   description: string;
   images: string[];
