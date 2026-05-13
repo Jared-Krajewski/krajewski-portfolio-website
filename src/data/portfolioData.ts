@@ -117,22 +117,8 @@ export const mockProjects: Project[] = [
     repoLink: "https://github.com/Jared-Krajewski/Pack-Pal",
     postedDate: "2025-11-01",
   },
-  // {
-  //   id: "5",
-  //   name: "Jim",
-  //   logo: `${imageSource}/jim-icon.webp`,
-  //   link: "",
-  //   commentLink: commentFormUrl,
-  //   description:
-  //     "A simple to use and open source fitness tracking application where you can log your workouts and see trends over time as well as keep track of weights used on various lifts. Includes a set timer with subtle audio or visual cues so you can focus on your workout. Available as a web app or native IOS/Android app.",
-  //   images: [`${imageSource}/none`],
-  //   technologies: ["React native", "nativewind", "expo", "supabase"],
-  //   repoLink: "https://github.com/codeforpdx/codepdx_website",
-  //   postedDate: "2025-12-14",
-  //   inDevelopment: true,
-  // },
   {
-    id: "6",
+    id: "5",
     name: "Planet Game",
     logo: `${imageSource}/planet-game-icon.webp`,
     appleLink:
@@ -147,7 +133,7 @@ export const mockProjects: Project[] = [
     postedDate: "2026-02-06",
   },
   {
-    id: "7",
+    id: "6",
     name: "PDXHub",
     logo: `${imageSource}/pdxhub-icon.webp`,
     link: "https://pdxhub.vercel.app/",
@@ -165,6 +151,25 @@ export const mockProjects: Project[] = [
     ],
     repoLink: "https://github.com/Jared-Krajewski/pdxHub",
     postedDate: "2026-04-08",
+  },
+  {
+    id: "7",
+    name: "Jim",
+    logo: `${imageSource}/jim-icon.webp`,
+    link: "",
+    commentLink: commentFormUrl,
+    description:
+      "A lightweight fitness tracking application where you can create templates, log your workouts and see trends over time as well as keep track of weights used on various lifts. Includes a set timer that can be run from the lock screen so you can focus on your workout. Available on iOS and Android.",
+    images: [
+      `${imageSource}/jim-1.webp`,
+      `${imageSource}/jim-2.webp`,
+      `${imageSource}/jim-3.webp`,
+      `${imageSource}/jim-4.webp`,
+      `${imageSource}/jim-5.webp`,
+    ],
+    technologies: ["React Native", "nativewind", "Expo"],
+    repoLink: "https://github.com/Jared-Krajewski/jim",
+    postedDate: "2026-5-14",
   },
 ];
 

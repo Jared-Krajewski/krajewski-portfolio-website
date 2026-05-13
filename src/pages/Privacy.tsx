@@ -44,6 +44,42 @@ If you have any questions about this privacy policy, please contact us through t
 
 Thank you for playing Planet Game!`,
   },
+  {
+    product: "jim",
+    displayName: "Jim",
+    content: `Jim Privacy Policy
+Effective Date: February 4, 2026
+
+Thank you for using Jim! This privacy policy explains how we handle your information when you use our app.
+
+Information We Collect
+We do not collect, store, or process any personal information or user data. Jim is designed to be used offline and does not require an internet connection.
+
+• No Account Data: No user accounts, emails, or personal identifiers are collected.
+• No Usage Data: We do not track scores, progress, or any usage statistics.
+• No Device Data: We do not access device information, location, or any hardware details.
+• No Advertising: Jim does not display ads or use any advertising networks.
+
+How We Use Information
+Since we don't collect any information, we don't use it for any purposes.
+
+Data Sharing
+We do not share any data with third parties because we don't collect any data.
+
+Data Security
+All app data is stored locally on your device. We don't have access to or control over your local data.
+
+Children's Privacy
+Jim is suitable for all ages and does not collect any information from children.
+
+Changes to This Policy
+If we make changes to this privacy policy, we will update the date at the top and make the updated policy available within the app.
+
+Contact Us
+If you have any questions about this privacy policy, please contact us through the App Store or our website.
+
+Thank you for using Jim!`,
+  },
 ];
 
 export default function Privacy() {
